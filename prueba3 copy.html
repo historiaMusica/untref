@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Compositores Antiguos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #e9ecef;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 50vh;
+    }
+
+    h1 {
+      font-family: 'Georgia', serif;
+      font-size: 2.4rem;
+      margin-bottom: 30px;
+      color: #1c1c1c;
+      text-align: center;
+    }
+
+    .filtros {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .filtros label {
+      margin: 0 10px;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+      perspective: 1000px;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+      max-width: 1100px;
+    }
+
+    .card {
+      width: 160px;
+      height: 230px;
+      perspective: 1000px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .card-inner {
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease;
+      position: relative;
+    }
+
+    .card.caida .card-inner {
+      transform: rotateX(100deg);
+      transform-origin: bottom center;
+    }
+
+    .card-front {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #f9f9f9;
+      border: 1px solid #bbb;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backface-visibility: hidden;
+    }
+
+    .card-front img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid #888;
+      margin-bottom: 12px;
+    }
+
+    .card-front .nombre {
+      font-size: 0.9rem;
+      color: #222;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .base {
+      width: 160px;
+      height: 12px;
+      background: #ccc;
+      border-top: 2px solid #aaa;
+      border-radius: 0 0 6px 6px;
+      margin-top: -4px;
+      z-index: -1;
+      transform: translateY(100%);
+    }
+
+    .card.caida .card-inner::after {
+      content: "✕";
+      font-size: 42px;
+      color: rgba(180, 0, 0, 0.7);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Compositores Medievales y del Renacimiento</h1>
+
+<div id="filtros" class="filtros">
+
+  <fieldset>
+    <legend>Período</legend>
+    <label><input type="checkbox" name="periodo" value="Edad Media"> Edad Media</label>
+    <label><input type="checkbox" name="periodo" value="Ars antiqua"> Ars antiqua</label>
+    <label><input type="checkbox" name="periodo" value="Ars nova"> Ars nova</label>
+    <label><input type="checkbox" name="periodo" value="Movimiento trovadoresco"> Movimiento trovadoresco</label>
+    <label><input type="checkbox" name="periodo" value="Renacimiento arcaico"> Renacimiento arcaico</label>
+    <label><input type="checkbox" name="periodo" value="Renacimiento franco-flamenco"> Renacimiento franco-flamenco</label>
+    <label><input type="checkbox" name="periodo" value="Renacimiento holandés"> Renacimiento holandés</label>
+    <label><input type="checkbox" name="periodo" value="Renacimiento escuelas nacionales"> Renacimiento escuelas nacionales</label>
+    <label><input type="checkbox" name="periodo" value="Renacimiento"> Renacimiento</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Nacionalidad</legend>
+    <label><input type="checkbox" name="nacionalidad" value="Alemania"> Alemania</label>
+    <label><input type="checkbox" name="nacionalidad" value="Francia"> Francia</label>
+    <label><input type="checkbox" name="nacionalidad" value="Italia"> Italia</label>
+    <label><input type="checkbox" name="nacionalidad" value="Flandes"> Flandes</label>
+    <label><input type="checkbox" name="nacionalidad" value="Inglaterra"> Inglaterra</label>
+    <label><input type="checkbox" name="nacionalidad" value="España"> España</label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Género</legend>
+    <label><input type="checkbox" name="genero" value="Misa"> Misa</label>
+    <label><input type="checkbox" name="genero" value="Motete"> Motete</label>
+    <label><input type="checkbox" name="genero" value="Canción polifónica medieval"> Canción polifónica medieval</label>
+    <label><input type="checkbox" name="genero" value="Madrigal"> Madrigal</label>
+    <label><input type="checkbox" name="genero" value="Chanson"> Chanson</label>
+    <label><input type="checkbox" name="genero" value="Ballata"> Ballata</label>
+    <label><input type="checkbox" name="genero" value="Conductus"> Conductus</label>
+    <label><input type="checkbox" name="genero" value="Rondeau"> Rondeau</label>
+    <label><input type="checkbox" name="genero" value="Virelay"> Virelay</label>
+    <label><input type="checkbox" name="genero" value="Frottola"> Frottola</label>
+    <label><input type="checkbox" name="genero" value="Caccia"> Caccia</label>
+    <label><input type="checkbox" name="genero" value="Hoquetus"> Hoquetus</label>
+    <label><input type="checkbox" name="genero" value="Fauxbourdon"> Fauxbourdon</label>
+  </fieldset>
+
+</div>
+
+
+
+  <div class="grid" id="tablero">
+    <!-- Las tarjetas de compositores se generan aquí dinámicamente -->
+  </div>
+
+  <script>
+ const datosCompositores = [
+
+  {
+    nombre: "Hildegarda von Bingen",
+    img: "hildegarda_von_bingen.jpg",
+    periodo: "Edad Media",
+    nacionalidad: "Alemania",
+    generos: ["Organum/Discantus/Conductus"]
+  },
+
+  {
+    nombre: "Leonin",
+    img: "leoninus.jpg",
+    periodo: ["Edad Media", "Ars antiqua"],
+    nacionalidad: "Francia",
+    generos: ["Organum/Discantus/Conductus"]
+  },
+
+  {
+    nombre: "Perotin",
+    img: "perotinus.jpg",
+    periodo: ["Edad Media", "Ars antiqua"],
+    nacionalidad: "Francia",
+    generos: ["Organum/Discantus/Conductus"]
+  },
+
+  {
+    nombre: "Petrus de Cruce",
+    img: "petrus.jpg",
+    periodo: ["Edad Media", "Ars antiqua"],
+    nacionalidad: "Francia",
+    generos: ["Motete"]
+  },
+
+  {
+    nombre: "Adam de la Halle",
+    img: "halle.jpg",
+    periodo: ["Edad Media", "Movimiento trovadoresco"],
+    nacionalidad: "Francia",
+    generos: ["Canción polifónica medieval", "Rondeau"]
+  },
+
+  {
+    nombre: "Condesa de Día",
+    img: "condesa.jpg",
+    periodo: ["Edad Media", "Movimiento trovadoresco"],
+    nacionalidad: "Francia",
+    generos: ["Canción polifónica medieval"]
+  },
+
+  {
+    nombre: "Philippe de Vitry",
+    img: "devitry.jpg",
+    periodo: ["Edad Media", "Ars nova"],
+    nacionalidad: "Francia",
+    generos: ["Motete"]
+  }, // hugo princeps cum structura
+
+  {
+    nombre: "Guillaume de Machaut",
+    img: "guillaume_de_machaut.jpg",
+    periodo: ["Edad Media", "Ars nova"],
+    nacionalidad: "Francia",
+    generos: ["Motete", "Canción polifónica medieval", "Misa", "Balada"]
+  }, // Nes que on porroit les estoilles / De fortune me doi plaindre et loer
+
+  {
+    nombre: "Mateo da Perugia",
+    img: "perugia.jpg",
+    periodo: ["Edad Media", "Ars nova"],
+    nacionalidad: "Italia",
+    generos: ["Canción polifónica medieval", "Virelay", "Ballata", "Motete", "Rondeau"]
+  },
+
+  {
+    nombre: "Giovanni da Cascia",
+    img: "daCascia.jpg",
+    periodo: ["Edad Media", "Ars nova"],
+    nacionalidad: "Italia",
+    generos: ["Canción polifónica medieval", "Madrigal medieval", "Caccia"]
+  },
+
+  {
+    nombre: "Francesco Landini",
+    img: "landini.jpg",
+    periodo: ["Edad Media", "Ars nova"],
+    nacionalidad: "Italia",
+    generos: ["Canción polifónica medieval", "Madrigal medieval", "Ballata"]
+  }, // ecco la primavera
+
+  {
+    nombre: "John Dunstable",
+    img: "dunstable.jpg",
+    periodo: "Renacimiento arcaico",
+    nacionalidad: "Inglaterra",
+    generos: ["Motete", "Misa"]
+  }, // regina celi / ascendit christus
+
+  {
+    nombre: "Gilles Binchois",
+    img: "binchois.jpg",
+    periodo: "Renacimiento arcaico",
+    nacionalidad: "Francia",
+    generos: ["Motete", "Misa"]
+  }, // adieu mon amoreuse joye
+
+  {
+    nombre: "Guillaume Dufay",
+    img: "dufay.jpg",
+    periodo: "Renacimiento arcaico",
+    nacionalidad: "Francia",
+    generos: ["Motete", "Misa", "Hoquetus", "Fauxbourdon"]
+  }, // ave regina coelorum
+
+  {
+    nombre: "Johannes Ockeghem",
+    img: "ockeghem.jpg",
+    periodo: "Renacimiento franco-flamenco",
+    nacionalidad: "Flandes",
+    generos: ["Motete", "Misa", "Chanson"]
+  },
+
+  {
+    nombre: "Antoine Busnois",
+    img: "busnois.jpg",
+    periodo: "Renacimiento franco-flamenco",
+    nacionalidad: "Francia",
+    generos: ["Motete"]
+  }, // a vous sans autre
+
+  {
+    nombre: "Josquin des Prez",
+    img: "josquin_des_prez.jpg",
+    periodo: "Renacimiento franco-flamenco",
+    nacionalidad: "Flandes",
+    generos: ["Motete", "Misa", "Chanson", "Frottola"]
+  },
+
+  {
+    nombre: "Jacob Obrecht",
+    img: "obrecht.jpg",
+    periodo: "Renacimiento holandés",
+    nacionalidad: "Flandes",
+    generos: ["Motete", "Misa", "Chanson"]
+  },
+
+  {
+    nombre: "Johannes Ciconia",
+    img: "ciconia.jpg",
+    periodo: "Renacimiento franco-flamenco",
+    nacionalidad: "Italia"
+    // generos: []
+  }, // o rosa bella
+
+
+
+//ESCUELAS NACIONALES
+//VENECIA
+
+  {
+    nombre: "Adrian Willaert",
+    img: "willaert.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Italia"
+    // generos: []
+  }, // escuela veneciana
+
+  {
+    nombre: "Andrea Gabrieli",
+    img: "andreagabrieli.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Italia"
+    // generos: []
+  }, // escuela veneciana
+
+  {
+    nombre: "Giovanni Gabrieli",
+    img: "gabrieli.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Italia"
+    // generos: []
+  }, // escuela veneciana
+
+  {
+    nombre: "Orlando Di Lasso",
+    img: "dilasso.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Italia"
+    // generos: []
+  }, // CONTRARREFORMA
+
+  {
+    nombre: "G. Pierluigi da Palestrina",
+    img: "palestrina.jpg",
+    periodo: "Renacimiento",
+    nacionalidad: "Italia",
+    generos: ["Misa", "Canción"]
+  }, // CONTRARREFORMA
+
+  {
+    nombre: "Tomás Luis de Victoria",
+    img: "victoria.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "España"
+    // generos: []
+  }, // CONTRARREFORMA
+
+
+
+//ESPAÑOLA
+  {
+    nombre: "Cristóbal de Morales",
+    img: "morales.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "España"
+    // generos: []
+  }, // CONTRARREFORMA
+
+  {
+    nombre: "Francisco Guerrero",
+    img: "guerrero.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "España"
+    // generos: []
+  }, // CONTRARREFORMA
+
+  {
+    nombre: "Juan del Encina",
+    img: "delencina.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "España"
+    // generos: []
+  },
+
+
+//INGLESA
+  {
+    nombre: "John Dowland",
+    img: "dowland.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Inglaterra"
+    // generos: []
+  },
+
+  {
+    nombre: "Thomas Morley",
+    img: "morley.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Inglaterra",
+    generos: ["Madrigal"]
+  },
+
+  {
+    nombre: "William Byrd",
+    img: "byrd.jpg",
+    periodo: "Renacimiento",
+    nacionalidad: "Inglaterra",
+    generos: ["Misa", "Canción"]
+  }, // REFORMA
+
+  {
+    nombre: "Thomas Tallis",
+    img: "tallis.jpg",
+    periodo: "Renacimiento",
+    nacionalidad: "Inglaterra",
+    generos: ["Motete", "Misa"]
+  }, // REFORMA
+
+  {
+    nombre: "Clement Janequin",
+    img: "janequin.jpg",
+    periodo: "Renacimiento escuelas nacionales",
+    nacionalidad: "Francia",
+    generos: ["Chanson"]
+  },
+
+
+
+  {
+    nombre: "Philippe Verdelot",
+    img: "verdelot.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Francia",
+    generos: ["Madrigal"]
+  }, //1er ESTADIO
+
+    {
+    nombre: "Jacques Arcadelt",
+    img: "arcadelt.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Francia",
+    generos: ["Madrigal"]
+  }, //2do ESTADIO
+
+    {
+    nombre: "Cypriano de Rore",
+    img: "rore.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Francia",
+    generos: ["Madrigal"]
+  },
+
+
+
+//2ER ESTADIO - MUY MANIERISTA, CAMINO AL BARROCO
+    {
+    nombre: "Luca Marenzio",
+    img: "marenzio.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Italia",
+    generos: ["Madrigal"]
+  },
+
+      {
+    nombre: "Carlo Gesualdo",
+    img: "gesualdo.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Italia",
+    generos: ["Madrigal"]
+  },
+
+      {
+    nombre: "Luzzasco Luzzaschi",
+    img: "luzzaschi.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Italia",
+    generos: ["Madrigal"]
+  },
+
+        {
+    nombre: "Claudio Monteverdi",
+    img: "monteverdi.jpg",
+    periodo: ["Renacimiento escuelas nacionales"],
+    nacionalidad: "Italia",
+    generos: ["Madrigal"]
+  }
+
+];
+
+
+function crearTarjeta(compositor) {
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const periodos = Array.isArray(compositor.periodo) ? compositor.periodo : [compositor.periodo];
+  const generos = Array.isArray(compositor.generos) ? compositor.generos : (compositor.generos ? [compositor.generos] : []);
+
+  card.dataset.periodo = JSON.stringify(periodos);
+  card.dataset.nacionalidad = compositor.nacionalidad;
+  card.dataset.generos = JSON.stringify(generos);
+
+  card.innerHTML = `
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="${compositor.img}" alt="${compositor.nombre}">
+        <div class="nombre">${compositor.nombre}</div>
+      </div>
+    </div>
+    <div class="base"></div>
+  `;
+
+  card.addEventListener('click', () => {
+    card.classList.toggle('caida');
+  });
+
+  return card;
+}
+
+const tablero = document.getElementById('tablero');
+datosCompositores.forEach(compositor => {
+  const tarjeta = crearTarjeta(compositor);
+  tablero.appendChild(tarjeta);
+});
+
+// 🔁 NUEVO: obtener los filtros desde checkboxes
+function obtenerFiltrosCheckbox() {
+  const filtros = {
+    periodo: [],
+    nacionalidad: [],
+    genero: []
+  };
+
+  document.querySelectorAll('#filtros input[type="checkbox"]:checked').forEach(checkbox => {
+    const name = checkbox.name;
+    const value = checkbox.value;
+    if (filtros[name]) {
+      filtros[name].push(value);
+    }
+  });
+
+  return filtros;
+}
+
+// 🔁 NUEVO: aplicar filtros usando checkboxes
+function aplicarFiltrosCheckbox() {
+  const filtros = obtenerFiltrosCheckbox();
+
+  const tarjetas = document.querySelectorAll('.card');
+  tarjetas.forEach(card => {
+    const datosPeriodo = JSON.parse(card.dataset.periodo);
+    const datosNacionalidad = card.dataset.nacionalidad;
+    const datosGeneros = JSON.parse(card.dataset.generos);
+
+    const coincidePeriodo = filtros.periodo.length === 0 || filtros.periodo.some(f => datosPeriodo.includes(f));
+    const coincideNacionalidad = filtros.nacionalidad.length === 0 || filtros.nacionalidad.includes(datosNacionalidad);
+    const coincideGenero = filtros.genero.length === 0 || datosGeneros.some(g => filtros.genero.includes(g));
+
+    card.style.display = (coincidePeriodo && coincideNacionalidad && coincideGenero) ? '' : 'none';
+  });
+}
+
+// 🔁 NUEVO: agregar listeners a los checkboxes
+document.querySelectorAll('#filtros input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', aplicarFiltrosCheckbox);
+});
+
+// Escape para cerrar tarjetas abiertas
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.card.caida').forEach(card => card.classList.remove('caida'));
+  }
+});
+
+  </script>
+</body>
+</html>
