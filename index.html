@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Historia de la música</title>
-  <style>
+ 
+ 
+  <div class="titulo-con-botones">
+    <h1>Compositores Medievales y del Renacimiento</h1>
+    <div id="botones-globales"></div>
+  </div>
+
+
+ <style>
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #e9ecef;
@@ -179,10 +186,93 @@
   background: #005fa3;
 }
 
+.header-con-boton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1100px;
+  margin-bottom: 20px;
+}
+
+.header-con-boton h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  color: #1c1c1c;
+}
+
+#btn-global-play {
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#btn-global-play:hover {
+  background-color: #eee;
+}
+
+.titulo-con-botones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 20px;
+}
+
+#botones-globales {
+  display: flex;
+  gap: 10px;
+}
+
+.panel-control {
+  width: 160px;
+  height: 120px;
+  padding-top: 12px;
+}
+
+.panel-control .card-front {
+  justify-content: space-evenly;
+  gap: 12px;
+}
+
+.panel-control button {
+  font-size: 24px;
+  padding: 8px 12px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.panel-control button:hover {
+  background-color: #bbb;
+}
+
+.boton-audio-global {
+  background-color: #f9f9f9;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.boton-audio-global:hover {
+  background-color: #e0e0e0;
+}
+
   </style>
 </head>
 <body>
-  <h1>Edad Media, Renacimiento y Barroco</h1>
+  <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
 <div id="filtros" class="filtros">
 
@@ -303,7 +393,7 @@
   }, // Nes que on porroit les estoilles / De fortune me doi plaindre et loer
 
   {
-    nombre: "Mateo da Perugia",
+    nombre: "Matteo da Perugia",
     img: "img/perugia.jpg",
     periodo: ["Edad Media", "Ars nova"],
     nacionalidad: "Italia",
@@ -689,6 +779,82 @@ function crearTarjeta(compositor) {
 }
 
 
+const reproductorGlobal = new Audio();
+let audioActualGlobal = null;
+
+function obtenerTodosLosAudios() {
+  return datosCompositores
+    .flatMap(comp => comp.audios || []);
+}
+
+function reproducirAudioAleatorioGlobal() {
+  const todosLosAudios = obtenerTodosLosAudios();
+  if (todosLosAudios.length === 0) return;
+
+  const nuevoAudio = todosLosAudios[Math.floor(Math.random() * todosLosAudios.length)];
+  audioActualGlobal = nuevoAudio;
+  reproductorGlobal.src = nuevoAudio;
+  reproductorGlobal.play();
+}
+
+// Al cargar la página, asignar un audio random para que play funcione desde el principio
+audioActualGlobal = obtenerTodosLosAudios()[0] || null;  // primer audio de la lista o null si no hay
+if (audioActualGlobal) {
+  reproductorGlobal.src = audioActualGlobal;
+}
+
+
+function togglePlayPauseGlobal() {
+  if (reproductorGlobal.paused) {
+    if (!reproductorGlobal.src && audioActualGlobal) {
+      reproductorGlobal.src = audioActualGlobal;
+    }
+    reproductorGlobal.play();
+  } else {
+    reproductorGlobal.pause();
+  }
+}
+
+const botonesGlobales = document.getElementById('botones-globales');
+
+const contenedorGlobal = document.createElement('div');
+contenedorGlobal.className = 'audio-controls'; // para el mismo layout flex y gap
+
+const btnGlobalPlayPause = document.createElement('button');
+btnGlobalPlayPause.className = 'play-btn';
+btnGlobalPlayPause.title = 'Reproducir / Pausar';
+btnGlobalPlayPause.innerHTML = '<i class="fa fa-play"></i>';
+
+btnGlobalPlayPause.addEventListener('click', () => {
+  if (reproductorGlobal.paused) {
+    reproductorGlobal.play();
+    btnGlobalPlayPause.querySelector('i').className = 'fa fa-pause';
+  } else {
+    reproductorGlobal.pause();
+    btnGlobalPlayPause.querySelector('i').className = 'fa fa-play';
+  }
+});
+
+const btnGlobalNext = document.createElement('button');
+btnGlobalNext.className = 'play-btn';
+btnGlobalNext.title = 'Siguiente audio aleatorio';
+btnGlobalNext.innerHTML = '<i class="fa fa-random"></i>';
+
+btnGlobalNext.addEventListener('click', () => {
+  if (!reproductorGlobal.paused) {
+    reproductorGlobal.pause();
+  }
+  reproducirAudioAleatorioGlobal();
+  btnGlobalPlayPause.querySelector('i').className = 'fa fa-pause';
+});
+
+contenedorGlobal.appendChild(btnGlobalPlayPause);
+contenedorGlobal.appendChild(btnGlobalNext);
+
+botonesGlobales.appendChild(contenedorGlobal);
+
+
+
 const tablero = document.getElementById('tablero');
 datosCompositores.forEach(compositor => {
   const tarjeta = crearTarjeta(compositor);
@@ -744,6 +910,46 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
+
+
+
+// const reproductorGlobal = new Audio();
+// let audioGlobalSonando = false;
+
+// document.getElementById('btn-global-play').addEventListener('click', () => {
+//   const btn = document.getElementById('btn-global-play');
+
+//   if (audioGlobalSonando) {
+//     reproductorGlobal.pause();
+//     reproductorGlobal.currentTime = 0;
+//     btn.textContent = '▶️ Aleatorio';
+//     audioGlobalSonando = false;
+//     return;
+//   }
+
+//   // Juntar todos los audios desde datosCompositores
+//   const todosLosAudios = datosCompositores.flatMap(comp => comp.audios || []);
+
+//   if (todosLosAudios.length === 0) return;
+
+//   const audioAleatorio = todosLosAudios[Math.floor(Math.random() * todosLosAudios.length)];
+
+//   reproductorGlobal.src = audioAleatorio;
+//   reproductorGlobal.play();
+
+//   audioGlobalSonando = true;
+//   btn.textContent = '⏸️ Pausar';
+
+//   reproductorGlobal.onended = () => {
+//     audioGlobalSonando = false;
+//     btn.textContent = '▶️ Aleatorio';
+//   };
+// });
+
+
   </script>
+
+
+
 </body>
 </html>
