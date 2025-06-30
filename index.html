@@ -5,13 +5,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  
  
-  <div class="titulo-con-botones">
-    <h1 id="titulo-principal" style="cursor: pointer;">Historia de la Música I</h1>
-    <div id="botones-globales"></div>
-    <div id="audio-global-info" style="display: none; margin-top: 8px; font-weight: bold; font-size: 1.2rem; color: #004a99; cursor: default;">
-      <!-- Aquí aparecerá el nombre del compositor global -->
-    </div>
-  </div>
+
 
 
  <style>
@@ -220,11 +214,11 @@
 
 .titulo-con-botones {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1000px;
-  margin-bottom: 20px;
+  text-align: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 #botones-globales {
@@ -272,9 +266,21 @@
   background-color: #e0e0e0;
 }
 
+#audio-global-info {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #004a99;
+}
   </style>
 </head>
 <body>
+
+  <div class="titulo-con-botones">
+    <h1 id="titulo-principal">Historia de la Música I</h1>
+    <div id="botones-globales"></div>
+    <div id="audio-global-info" style="display: none;"></div>
+  </div>
+
   <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
 <div id="filtros" class="filtros">
