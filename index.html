@@ -292,10 +292,19 @@
     <label><input type="checkbox" name="periodo" value="Ars nova"> Ars nova</label>
     <label><input type="checkbox" name="periodo" value="Movimiento trovadoresco"> Movimiento trovadoresco</label>
     <label><input type="checkbox" name="periodo" value="Renacimiento arcaico"> Renacimiento arcaico</label>
-    <label><input type="checkbox" name="periodo" value="Renacimiento franco-flamenco"> Renacimiento franco-flamenco</label>
-    <label><input type="checkbox" name="periodo" value="Renacimiento holandés"> Renacimiento holandés</label>
+    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca"> Escuela franco-flamenca</label>
+    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca - 1ra generación"> Escuela franco-flamenca - 1ra generación</label>
+    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación"> Escuela franco-flamenca - 2da generación</label>
     <label><input type="checkbox" name="periodo" value="Renacimiento escuelas nacionales"> Renacimiento escuelas nacionales</label>
     <label><input type="checkbox" name="periodo" value="Renacimiento"> Renacimiento</label>
+    <label><input type="checkbox" name="periodo" value="Barroco"> Barroco</label>
+    <label><input type="checkbox" name="periodo" value="Barroco temprano"> Barroco temprano</label>
+    <label><input type="checkbox" name="periodo" value="Barroco medio"> Barroco medio</label>
+    <label><input type="checkbox" name="periodo" value="Barroco tardío"> Barroco tardío</label>
+
+
+
+
   </fieldset>
 
   <fieldset>
@@ -306,6 +315,8 @@
     <label><input type="checkbox" name="nacionalidad" value="Flandes"> Flandes</label>
     <label><input type="checkbox" name="nacionalidad" value="Inglaterra"> Inglaterra</label>
     <label><input type="checkbox" name="nacionalidad" value="España"> España</label>
+    <label><input type="checkbox" name="nacionalidad" value="Países Bajos"> Países Bajos</label>
+
   </fieldset>
 
   <fieldset>
@@ -335,6 +346,8 @@
 
   <script>
  const datosCompositores = [
+
+
 
   {
     nombre: "Hildegarda von Bingen",
@@ -435,10 +448,14 @@
     audios: ["audio/41.mp3", "audio/42.mp3", "audio/43.mp3", "audio/44.mp3"]
   }, // ecco la primavera
 
+
+
+
+
   {
     nombre: "John Dunstable",
     img: "img/dunstable.jpg",
-    periodo: "Renacimiento arcaico",
+    periodo: ["Renacimiento arcaico", "Renacimiento"],
     nacionalidad: "Inglaterra",
     generos: ["Motete", "Misa"],
     audios: ["audio/45.mp3", "audio/46.mp3", "audio/47.mp3", "audio/48.mp3"]
@@ -447,7 +464,7 @@
   {
     nombre: "Gilles Binchois",
     img: "img/binchois.jpg",
-    periodo: "Renacimiento arcaico",
+    periodo: ["Renacimiento arcaico", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Motete", "Misa"],
     audios: ["audio/49.mp3", "audio/50.mp3", "audio/51.mp3", "audio/52.mp3"]
@@ -456,7 +473,7 @@
   {
     nombre: "Guillaume Dufay",
     img: "img/dufay.jpg",
-    periodo: "Renacimiento arcaico",
+    periodo: ["Renacimiento arcaico", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Motete", "Misa", "Hoquetus", "Fauxbourdon"],
     audios: ["audio/53.mp3", "audio/54.mp3", "audio/55.mp3", "audio/56.mp3"]
@@ -465,7 +482,7 @@
   {
     nombre: "Johannes Ockeghem",
     img: "img/ockeghem.jpg",
-    periodo: "Renacimiento franco-flamenco",
+    periodo: ["Escuela franco-flamenca - 1ra generación", "Renacimiento"],
     nacionalidad: "Flandes",
     generos: ["Motete", "Misa", "Chanson"],
     audios: ["audio/57.mp3", "audio/58.mp3", "audio/59.mp3", "audio/60.mp3"]
@@ -474,7 +491,7 @@
   {
     nombre: "Antoine Busnois",
     img: "img/busnois.jpg",
-    periodo: "Renacimiento franco-flamenco",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Motete"],
     audios: ["audio/61.mp3", "audio/62.mp3", "audio/63.mp3", "audio/64.mp3"]
@@ -483,7 +500,7 @@
   {
     nombre: "Josquin des Prez",
     img: "img/josquin_des_prez.jpg",
-    periodo: "Renacimiento franco-flamenco",
+    periodo: ["Escuela franco-flamenca - 2da generación", "Renacimiento"],
     nacionalidad: "Flandes",
     generos: ["Motete", "Misa", "Chanson", "Frottola"],
     audios: ["audio/65.mp3", "audio/66.mp3", "audio/67.mp3", "audio/68.mp3"]
@@ -492,7 +509,7 @@
   {
     nombre: "Jacob Obrecht",
     img: "img/obrecht.jpg",
-    periodo: "Renacimiento holandés",
+    periodo: ["Renacimiento"],
     nacionalidad: "Flandes",
     generos: ["Motete", "Misa", "Chanson"],
     audios: ["audio/69.mp3", "audio/70.mp3", "audio/71.mp3", "audio/72.mp3"]
@@ -501,20 +518,33 @@
   {
     nombre: "Johannes Ciconia",
     img: "img/ciconia.jpg",
-    periodo: "Renacimiento franco-flamenco",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
     nacionalidad: "Italia"
     // generos: []
   }, // o rosa bella
 
+ {
+    nombre: "Nicolas Gombert",
+    img: "img/gombert.jpg",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
+    nacionalidad: "Flandes"
+    // generos: []
+  }, 
 
-
+  {
+    nombre: "Jacques Clément",
+    img: "img/clement.jpg",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
+    nacionalidad: "Flandes"
+    // generos: []
+  }, 
 //ESCUELAS NACIONALES
 //VENECIA
 
   {
     nombre: "Adrian Willaert",
     img: "img/willaert.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia"
     // generos: []
   }, // escuela veneciana
@@ -522,7 +552,7 @@
   {
     nombre: "Andrea Gabrieli",
     img: "img/andreagabrieli.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia"
     // generos: []
   }, // escuela veneciana
@@ -530,7 +560,7 @@
   {
     nombre: "Giovanni Gabrieli",
     img: "img/gabrieli.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia"
     // generos: []
   }, // escuela veneciana
@@ -538,7 +568,7 @@
   {
     nombre: "Orlando Di Lasso",
     img: "img/dilasso.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia"
     // generos: []
   }, // CONTRARREFORMA
@@ -554,7 +584,7 @@
   {
     nombre: "Tomás Luis de Victoria",
     img: "img/victoria.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "España"
     // generos: []
   }, // CONTRARREFORMA
@@ -565,7 +595,7 @@
   {
     nombre: "Cristóbal de Morales",
     img: "img/morales.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "España"
     // generos: []
   }, // CONTRARREFORMA
@@ -573,7 +603,7 @@
   {
     nombre: "Francisco Guerrero",
     img: "img/guerrero.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "España"
     // generos: []
   }, // CONTRARREFORMA
@@ -581,7 +611,7 @@
   {
     nombre: "Juan del Encina",
     img: "img/delencina.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "España"
     // generos: []
   },
@@ -591,7 +621,7 @@
   {
     nombre: "John Dowland",
     img: "img/dowland.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Inglaterra"
     // generos: []
   },
@@ -599,7 +629,7 @@
   {
     nombre: "Thomas Morley",
     img: "img/morley.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Inglaterra",
     generos: ["Madrigal"]
   },
@@ -623,7 +653,7 @@
   {
     nombre: "Clement Janequin",
     img: "img/janequin.jpg",
-    periodo: "Renacimiento escuelas nacionales",
+    periodo:["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Chanson"]
   },
@@ -633,7 +663,7 @@
   {
     nombre: "Philippe Verdelot",
     img: "img/verdelot.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Madrigal"]
   }, //1er ESTADIO
@@ -641,7 +671,7 @@
     {
     nombre: "Jacques Arcadelt",
     img: "img/arcadelt.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Madrigal"]
   }, //2do ESTADIO
@@ -649,7 +679,7 @@
     {
     nombre: "Cypriano de Rore",
     img: "img/rore.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
     generos: ["Madrigal"]
   },
@@ -660,7 +690,7 @@
     {
     nombre: "Luca Marenzio",
     img: "img/marenzio.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
     generos: ["Madrigal"]
   },
@@ -668,7 +698,7 @@
       {
     nombre: "Carlo Gesualdo",
     img: "img/gesualdo.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
     generos: ["Madrigal"]
   },
@@ -676,7 +706,7 @@
       {
     nombre: "Luzzasco Luzzaschi",
     img: "img/luzzaschi.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
     generos: ["Madrigal"]
   },
@@ -684,9 +714,137 @@
         {
     nombre: "Claudio Monteverdi",
     img: "img/monteverdi.jpg",
-    periodo: ["Renacimiento escuelas nacionales"],
+    periodo: ["Renacimiento escuelas nacionales", "Renacimiento", "Barroco temprano"],
     nacionalidad: "Italia",
     generos: ["Madrigal"]
+  },
+
+
+
+
+
+
+
+
+  {
+    nombre: "Giulio Caccini",
+    img: "img/caccini.jpg",
+    periodo: ["Barroco temprano", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Girolamo Frescobaldi",
+    img: "img/frescobaldi.jpg",
+    periodo: ["Barroco temprano", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Jan Pieterszoon Sweelinck",
+    img: "img/sweelinck.jpg",
+    periodo: ["Barroco temprano", "Barroco"],
+    nacionalidad: "Países Bajos",
+  },
+
+  {
+    nombre: "Dietrich Buxtehude",
+    img: "img/buxtehude.jpg",
+    periodo: ["Barroco medio", "Barroco"],
+    nacionalidad: "Alemania",
+  },
+
+
+
+  {
+    nombre: "Alessandro Scarlatti",
+    img: "img/scarlatti.jpg",
+    periodo: ["Barroco medio", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Jean-Baptiste Lully",
+    img: "img/lully.jpg",
+    periodo: ["Barroco medio", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Henry Purcell",
+    img: "img/purcell.jpg",
+    periodo: ["Barroco medio", "Barroco"],
+    nacionalidad: "Inglaterra",
+  },
+
+  {
+    nombre: "Georg Friedrich Händel",
+    img: "img/haendel.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Alemania",
+  },
+
+  {
+    nombre: "Arcangelo Corelli",
+    img: "img/corelli.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Domenico Scarlatti",
+    img: "img/dscarlatti.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Leonardo Vinci",
+    img: "img/vinci.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Antonio Vivaldi",
+    img: "img/vivaldi.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Italia",
+  },
+
+  {
+    nombre: "Jean-Philippe Rameau",
+    img: "img/rameau.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Francia",
+  },
+
+  {
+    nombre: "Giuseppe Torelli",
+    img: "img/torelli.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Italia",
+  },
+  
+  {
+    nombre: "François Couperin",
+    img: "img/couperin.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Francia",
+  },
+
+  {
+    nombre: "Johann Sebastian Bach",
+    img: "img/bach.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Alemania",
+  },
+
+  {
+    nombre: "Johann Mattheson",
+    img: "img/mattheson.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    nacionalidad: "Alemania",
   }
 
 ];
