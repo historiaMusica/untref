@@ -11,22 +11,60 @@
 
 
  <style>
-    body {
+
+body {
+  position: relative;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0; /* importante para que quede encima del fondo */
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitruvian_Man_by_Leonardo_da_Vinci.jpg/1024px-Vitruvian_Man_by_Leonardo_da_Vinci.jpg');
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  opacity: 0.30; /* nivel de transparencia */
+  z-index: -1;
+  pointer-events: none;
+}
+
+     /* body {
+       background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitruvian_Man_by_Leonardo_da_Vinci.jpg/1024px-Vitruvian_Man_by_Leonardo_da_Vinci.jpg');
+       background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #ffffff80;
       font-family: 'Segoe UI', sans-serif;
-      background: #e9ecef;
       color: #333;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px;
       min-height: 50vh;
-    }
+
+    }  */
 
     h1 {
-      font-family: 'Georgia', serif;
+      /* font-family: 'Georgia', serif; */
       font-size: 2.4rem;
       margin-bottom: 10px;
-      color: #1c1c1c;
+      color: #060606;
       text-align: center;
     }
 
@@ -40,7 +78,7 @@
       gap: 15px;
       justify-content: center;
       perspective: 1000px;
-      background-color: #ffffff;
+      background-color: #ffffff80;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
@@ -92,7 +130,7 @@
 }
 
 .card-front {
-  background: #ffffff;
+  background: #ffffffe5;
   border: 1px solid #ddd;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -139,8 +177,8 @@
     .base {
       width: 150px;
       height: 12px;
-      background: #ccc;
-      border-top: 2px solid #aaa;
+      background: rgba(204, 204, 204, 0.981);
+      border-top: 2px solid rgba(170, 170, 170, 0.921);
       border-radius: 0 0 6px 6px;
       margin-top: -4px;
       z-index: -1;
@@ -150,7 +188,7 @@
     .card.caida .card-inner::after {
       content: "✕";
       font-size: 42px;
-      color: rgba(180, 0, 0, 0.7);
+      color: rgb(119, 36, 5);
       position: absolute;
       top: 50%;
       left: 50%;
@@ -171,7 +209,7 @@
   border: none;
   border-radius: 6px;
   padding: 8px;
-  color: white;
+  color: rgba(255, 255, 255, 0.858);
   font-size: 16px;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -210,19 +248,68 @@
   background-color: #eee;
 }
 
-.titulo-con-botones {
+/* .titulo-con-botones {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 12px;
   margin-bottom: 16px;
+} */
+#encabezado-global {
+  background-color: #ffffffb1;
+
+  display: flex;
+  justify-content: center; /* Centra todo el contenedor horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  gap: 3px;                  /* Sin espacio entre título y botón */
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+#titulo-principal {
+  font-weight: bold;
+  font-size: clamp(1.2rem, 4vw, 2.4rem);
+  margin: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 #botones-globales {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  margin-left: 0; /* Para evitar espacios extras */
 }
+
+#botones-globales .play-btn {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  padding: 0.3rem 0.8rem;
+  border-radius: 0.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  /* Para que el botón también se achique proporcionalmente */
+}
+
+#botones-globales .play-btn:hover {
+  background-color: #0056b3;
+}
+
+#botones-globales .play-btn i {
+  font-size: 1.3em;
+  pointer-events: none;
+}
+
+
 
 .panel-control {
   width: 160px;
@@ -281,6 +368,12 @@
   display: none !important;
 }
 
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #ffffffcb !important;
+
+}
+
 @media (max-width: 998px) {
     #filtros label {
       font-size: 0.85rem;
@@ -289,7 +382,7 @@
   }
 
 
-  @media (max-width: 500px) {
+  @media (max-width: 550px) {
     #filtros label {
       font-size: 0.85rem;
     }
@@ -301,17 +394,32 @@
       position: relative;
       cursor: pointer;
     }
+
+    #titulo-principal {
+    font-size: 1.2rem;
+  }
+  #botones-globales .play-btn {
+    font-size: 1.2rem;
+    padding: 0.3rem 0.6rem;
+  }
   }
 
   </style>
 </head>
 <body>
 
-  <div class="titulo-con-botones">
+  <div class="d-flex align-items-center justify-content-between flex-wrap" id="encabezado-global">
+    <h1 id="titulo-principal" class="flex-grow-1">Historia de la Música I</h1>
+    <div id="botones-globales" class="flex-grow-1"></div>
+  </div>
+  
+  <div id="audio-global-info" class="mt-2 text-muted small" style="display: none;"></div>
+  
+  <!-- <div class="titulo-con-botones">
     <h1 id="titulo-principal">Historia de la Música I</h1>
     <div id="audio-global-info" style="display:none; margin-top:10px; font-weight:bold;"></div>
     <div id="botones-globales"></div>
-  </div>
+  </div> -->
 
   <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
