@@ -34,7 +34,7 @@ body::before {
   width: 100vw;
   height: 100vh;
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitruvian_Man_by_Leonardo_da_Vinci.jpg/1024px-Vitruvian_Man_by_Leonardo_da_Vinci.jpg');
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;
@@ -382,11 +382,10 @@ body::before {
   }
 
   @media (max-width: 768px) {
-  body::before {
+    body::before {
     background-size: cover;
     background-position: center top;
-    background-repeat: repeat;
-
+    background-attachment: scroll; /* 🔄 importante para móviles */
   }
 }
 
@@ -395,8 +394,8 @@ body::before {
     body::before {
     background-size: cover;
     background-position: center top;
-    background-repeat: repeat;
-    }
+    background-attachment: scroll; /* 🔄 importante para móviles */
+  }
 
     #filtros label {
       font-size: 0.85rem;
