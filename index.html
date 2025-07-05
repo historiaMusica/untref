@@ -381,8 +381,23 @@ body::before {
 
   }
 
+  @media (max-width: 768px) {
+  body::before {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: repeat;
+
+  }
+}
+
 
   @media (max-width: 550px) {
+    body::before {
+    background-size: cover;
+    background-position: center top;
+    background-repeat: repeat;
+    }
+
     #filtros label {
       font-size: 0.85rem;
     }
