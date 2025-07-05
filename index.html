@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
  
  
 
@@ -16,43 +18,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 40px;
       min-height: 50vh;
     }
 
     h1 {
       font-family: 'Georgia', serif;
       font-size: 2.4rem;
-      margin-bottom: 30px;
+      margin-bottom: 10px;
       color: #1c1c1c;
       text-align: center;
     }
 
-    .filtros {
-      margin-bottom: 20px;
-      text-align: center;
-    }
+   
 
-    .filtros label {
-      margin: 0 10px;
-    }
+
 
     .grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 24px;
+      gap: 15px;
       justify-content: center;
       perspective: 1000px;
       background-color: #ffffff;
-      padding: 40px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
-      max-width: 1100px;
+      max-width: 1400px;
     }
 
     .card {
-      width: 160px;
-      height: 230px;
+      width: 150px;
+      height: 220px;
       perspective: 1000px;
       position: relative;
       cursor: pointer;
@@ -124,23 +121,23 @@
 }
 
     .card-front img {
-      width: 110px;
-      height: 110px;
+      width: 100px;
+      height: 100px;
       object-fit: cover;
-      border-radius: 4px;
-      border: 1px solid #888;
+      border-radius: 2px;
+      border: 1.5px solid #888;
       margin-bottom: 12px;
     }
 
     .card-front .nombre {
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: #222;
       text-align: center;
       font-weight: 500;
     }
 
     .base {
-      width: 160px;
+      width: 150px;
       height: 12px;
       background: #ccc;
       border-top: 2px solid #aaa;
@@ -161,6 +158,7 @@
       pointer-events: none;
     }
 
+   
     .audio-controls {
   display: flex;
   gap: 8px;
@@ -218,7 +216,7 @@
   align-items: center;
   text-align: center;
   gap: 12px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
 #botones-globales {
@@ -268,76 +266,126 @@
 
 #audio-global-info {
   font-weight: bold;
-  font-size: 1.1rem;
-  color: #004a99;
+  margin-top: 10px;
+  display: none;
 }
+
+.audio-info {
+  font-size: 0.75em;
+  color: #333;
+  margin-top: 4px;
+  word-break: break-all;
+}
+
+.card .audio-info {
+  display: none !important;
+}
+
+@media (max-width: 998px) {
+    #filtros label {
+      font-size: 0.85rem;
+    }
+
+  }
+
+
+  @media (max-width: 500px) {
+    #filtros label {
+      font-size: 0.85rem;
+    }
+
+    .card {
+      width: 130px;
+      height: 220px;
+      perspective: 1000px;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+
   </style>
 </head>
 <body>
 
   <div class="titulo-con-botones">
     <h1 id="titulo-principal">Historia de la Música I</h1>
+    <div id="audio-global-info" style="display:none; margin-top:10px; font-weight:bold;"></div>
     <div id="botones-globales"></div>
-    <div id="audio-global-info" style="display: none;"></div>
   </div>
 
   <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
-<div id="filtros" class="filtros">
-
-  <fieldset>
-    <legend>Período</legend>
-    <label><input type="checkbox" name="periodo" value="Edad Media"> Edad Media</label>
-    <label><input type="checkbox" name="periodo" value="Ars antiqua"> Ars antiqua</label>
-    <label><input type="checkbox" name="periodo" value="Ars nova"> Ars nova</label>
-    <label><input type="checkbox" name="periodo" value="Movimiento trovadoresco"> Movimiento trovadoresco</label>
-    <label><input type="checkbox" name="periodo" value="Renacimiento arcaico"> Renacimiento arcaico</label>
-    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca"> Escuela franco-flamenca</label>
-    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca - 1ra generación"> Escuela franco-flamenca - 1ra generación</label>
-    <label><input type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación"> Escuela franco-flamenca - 2da generación</label>
-    <label><input type="checkbox" name="periodo" value="Renacimiento escuelas nacionales"> Renacimiento escuelas nacionales</label>
-    <label><input type="checkbox" name="periodo" value="Renacimiento"> Renacimiento</label>
-    <label><input type="checkbox" name="periodo" value="Barroco"> Barroco</label>
-    <label><input type="checkbox" name="periodo" value="Barroco temprano"> Barroco temprano</label>
-    <label><input type="checkbox" name="periodo" value="Barroco medio"> Barroco medio</label>
-    <label><input type="checkbox" name="periodo" value="Barroco tardío"> Barroco tardío</label>
-
-
-
-
-  </fieldset>
-
-  <fieldset>
-    <legend>Nacionalidad</legend>
-    <label><input type="checkbox" name="nacionalidad" value="Alemania"> Alemania</label>
-    <label><input type="checkbox" name="nacionalidad" value="Francia"> Francia</label>
-    <label><input type="checkbox" name="nacionalidad" value="Italia"> Italia</label>
-    <label><input type="checkbox" name="nacionalidad" value="Flandes"> Flandes</label>
-    <label><input type="checkbox" name="nacionalidad" value="Inglaterra"> Inglaterra</label>
-    <label><input type="checkbox" name="nacionalidad" value="España"> España</label>
-    <label><input type="checkbox" name="nacionalidad" value="Países Bajos"> Países Bajos</label>
-
-  </fieldset>
-
-  <fieldset>
-    <legend>Género</legend>
-    <label><input type="checkbox" name="genero" value="Misa"> Misa</label>
-    <label><input type="checkbox" name="genero" value="Motete"> Motete</label>
-    <label><input type="checkbox" name="genero" value="Canción polifónica medieval"> Canción polifónica medieval</label>
-    <label><input type="checkbox" name="genero" value="Madrigal"> Madrigal</label>
-    <label><input type="checkbox" name="genero" value="Chanson"> Chanson</label>
-    <label><input type="checkbox" name="genero" value="Ballata"> Ballata</label>
-    <label><input type="checkbox" name="genero" value="Conductus"> Conductus</label>
-    <label><input type="checkbox" name="genero" value="Rondeau"> Rondeau</label>
-    <label><input type="checkbox" name="genero" value="Virelay"> Virelay</label>
-    <label><input type="checkbox" name="genero" value="Frottola"> Frottola</label>
-    <label><input type="checkbox" name="genero" value="Caccia"> Caccia</label>
-    <label><input type="checkbox" name="genero" value="Hoquetus"> Hoquetus</label>
-    <label><input type="checkbox" name="genero" value="Fauxbourdon"> Fauxbourdon</label>
-  </fieldset>
-
-</div>
-
+  <div id="filtros" class="container my-4 p-4 border rounded bg-light">
+    <div class="row g-4 text-center">
+  
+      <!-- Período -->
+      <div class="col-md-4 fs-sm">
+        <fieldset>
+          <legend class="h6 fw-bold text-center mb-3">Período</legend>
+          <div class="d-grid gap-1 text-start lh-sm">
+            <!-- ✅ Todos los labels sin scroll interno -->
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Edad Media">Edad Media</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars antiqua">Ars antiqua</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars nova">Ars nova</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Movimiento trovadoresco">Movimiento trovadoresco</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento arcaico">Renacimiento arcaico</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 1ra generación">Franco-flamenca 1ra gen.</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación">Franco-flamenca 2da gen.</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento escuelas nacionales">Escuelas nacionales</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento">Renacimiento</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco">Barroco</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco temprano">Barroco temprano</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco medio">Barroco medio</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco tardío">Barroco tardío</label>
+          </div>
+        </fieldset>
+      </div>
+  
+      <!-- Nacionalidad -->
+      <div class="col-md-4 fs-sm">
+        <fieldset>
+          <legend class="h6 fw-bold text-center mb-3">Nacionalidad</legend>
+          <div class="d-grid gap-1 text-start lh-sm">
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Alemania">Alemania</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Francia">Francia</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Italia">Italia</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Flandes">Flandes</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Inglaterra">Inglaterra</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="España">España</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Países Bajos">Países Bajos</label>
+          </div>
+        </fieldset>
+      </div>
+  
+      <!-- Género -->
+      <div class="col-md-4 fs-sm">
+        <fieldset>
+          <legend class="h6 fw-bold text-center mb-3">Género</legend>
+          <div class="d-grid gap-1 text-start lh-sm">
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Misa">Misa</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Motete">Motete</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Canción polifónica medieval">Canción medieval</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Madrigal">Madrigal</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Chanson">Chanson</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Ballata">Ballata</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Conductus">Conductus</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Rondeau">Rondeau</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Virelay">Virelay</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Frottola">Frottola</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Caccia">Caccia</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Hoquetus">Hoquetus</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Fauxbourdon">Fauxbourdon</label>
+          </div>
+        </fieldset>
+      </div>
+  
+    </div>
+  </div>
+  
+  
+  
+  
 
 
   <div class="grid" id="tablero">
@@ -355,7 +403,7 @@
     periodo: "Edad Media",
     nacionalidad: "Alemania",
     generos: ["Organum/Discantus/Conductus"],
-    audios: ["audio/01.mp3", "audio/02.mp3", "audio/03.mp3"]
+    audios: ["audio/Canzoneta.mp3", "audio/02.mp3", "audio/03.mp3"]
   },
 
   {
@@ -519,24 +567,27 @@
     nombre: "Johannes Ciconia",
     img: "img/ciconia.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Italia"
-    // generos: []
+    nacionalidad: "Italia",
+    generos: [],
+    audios: []
   }, // o rosa bella
 
  {
     nombre: "Nicolas Gombert",
     img: "img/gombert.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Flandes"
-    // generos: []
+    nacionalidad: "Flandes",
+    generos: [],
+    audios: []
   }, 
 
   {
     nombre: "Jacques Clément",
     img: "img/clement.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Flandes"
-    // generos: []
+    nacionalidad: "Flandes",
+    generos: [],
+    audios: []
   }, 
 //ESCUELAS NACIONALES
 //VENECIA
@@ -545,32 +596,36 @@
     nombre: "Adrian Willaert",
     img: "img/willaert.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia"
-    // generos: []
+    nacionalidad: "Italia",
+    generos: [],
+    audios: []
   }, // escuela veneciana
 
   {
     nombre: "Andrea Gabrieli",
     img: "img/andreagabrieli.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia"
-    // generos: []
+    nacionalidad: "Italia",
+    generos: [],
+    audios: []
   }, // escuela veneciana
 
   {
     nombre: "Giovanni Gabrieli",
     img: "img/gabrieli.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia"
-    // generos: []
+    nacionalidad: "Italia",
+    generos: [],
+    audios: []
   }, // escuela veneciana
 
   {
     nombre: "Orlando Di Lasso",
     img: "img/dilasso.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia"
-    // generos: []
+    nacionalidad: "Italia",
+    generos: [],
+    audios: []
   }, // CONTRARREFORMA
 
   {
@@ -578,15 +633,17 @@
     img: "img/palestrina.jpg",
     periodo: "Renacimiento",
     nacionalidad: "Italia",
-    generos: ["Misa", "Canción"]
+    generos: ["Misa", "Canción"],
+    audios: []
   }, // CONTRARREFORMA
 
   {
     nombre: "Tomás Luis de Victoria",
     img: "img/victoria.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España"
-    // generos: []
+    nacionalidad: "España",
+    generos: [],
+    audios: []
   }, // CONTRARREFORMA
 
 
@@ -596,24 +653,27 @@
     nombre: "Cristóbal de Morales",
     img: "img/morales.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España"
-    // generos: []
+    nacionalidad: "España",
+    generos: [],
+    audios: []
   }, // CONTRARREFORMA
 
   {
     nombre: "Francisco Guerrero",
     img: "img/guerrero.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España"
-    // generos: []
+    nacionalidad: "España",
+    generos: [],
+    audios: []
   }, // CONTRARREFORMA
 
   {
     nombre: "Juan del Encina",
     img: "img/delencina.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España"
-    // generos: []
+    nacionalidad: "España",
+    generos: [],
+    audios: []
   },
 
 
@@ -622,8 +682,9 @@
     nombre: "John Dowland",
     img: "img/dowland.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Inglaterra"
-    // generos: []
+    nacionalidad: "Inglaterra",
+    generos: [],
+    audios: []
   },
 
   {
@@ -631,7 +692,8 @@
     img: "img/morley.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Inglaterra",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
   {
@@ -639,7 +701,8 @@
     img: "img/byrd.jpg",
     periodo: "Renacimiento",
     nacionalidad: "Inglaterra",
-    generos: ["Misa", "Canción"]
+    generos: ["Misa", "Canción"],
+    audios: []
   }, // REFORMA
 
   {
@@ -647,7 +710,8 @@
     img: "img/tallis.jpg",
     periodo: "Renacimiento",
     nacionalidad: "Inglaterra",
-    generos: ["Motete", "Misa"]
+    generos: ["Motete", "Misa"],
+    audios: []
   }, // REFORMA
 
   {
@@ -655,7 +719,8 @@
     img: "img/janequin.jpg",
     periodo:["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
-    generos: ["Chanson"]
+    generos: ["Chanson"],
+    audios: []
   },
 
 
@@ -665,7 +730,8 @@
     img: "img/verdelot.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   }, //1er ESTADIO
 
     {
@@ -673,7 +739,8 @@
     img: "img/arcadelt.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   }, //2do ESTADIO
 
     {
@@ -681,7 +748,8 @@
     img: "img/rore.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Francia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
 
@@ -692,7 +760,8 @@
     img: "img/marenzio.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
       {
@@ -700,7 +769,8 @@
     img: "img/gesualdo.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
       {
@@ -708,7 +778,8 @@
     img: "img/luzzaschi.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
     nacionalidad: "Italia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
         {
@@ -716,7 +787,8 @@
     img: "img/monteverdi.jpg",
     periodo: ["Renacimiento escuelas nacionales", "Renacimiento", "Barroco temprano"],
     nacionalidad: "Italia",
-    generos: ["Madrigal"]
+    generos: ["Madrigal"],
+    audios: []
   },
 
 
@@ -731,6 +803,8 @@
     img: "img/caccini.jpg",
     periodo: ["Barroco temprano", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -738,6 +812,8 @@
     img: "img/frescobaldi.jpg",
     periodo: ["Barroco temprano", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -745,6 +821,8 @@
     img: "img/sweelinck.jpg",
     periodo: ["Barroco temprano", "Barroco"],
     nacionalidad: "Países Bajos",
+    generos: [],
+    audios: []
   },
 
   {
@@ -752,6 +830,8 @@
     img: "img/buxtehude.jpg",
     periodo: ["Barroco medio", "Barroco"],
     nacionalidad: "Alemania",
+    generos: [],
+    audios: []
   },
 
 
@@ -761,6 +841,8 @@
     img: "img/scarlatti.jpg",
     periodo: ["Barroco medio", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -768,6 +850,8 @@
     img: "img/lully.jpg",
     periodo: ["Barroco medio", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -775,6 +859,8 @@
     img: "img/purcell.jpg",
     periodo: ["Barroco medio", "Barroco"],
     nacionalidad: "Inglaterra",
+    generos: [],
+    audios: []
   },
 
   {
@@ -782,6 +868,8 @@
     img: "img/haendel.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Alemania",
+    generos: [],
+    audios: []
   },
 
   {
@@ -789,6 +877,8 @@
     img: "img/corelli.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -796,6 +886,8 @@
     img: "img/dscarlatti.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -803,6 +895,8 @@
     img: "img/vinci.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -810,6 +904,8 @@
     img: "img/vivaldi.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -817,6 +913,8 @@
     img: "img/rameau.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Francia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -824,6 +922,8 @@
     img: "img/torelli.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Italia",
+    generos: [],
+    audios: []
   },
   
   {
@@ -831,6 +931,8 @@
     img: "img/couperin.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Francia",
+    generos: [],
+    audios: []
   },
 
   {
@@ -838,6 +940,8 @@
     img: "img/bach.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Alemania",
+    generos: [],
+    audios: []
   },
 
   {
@@ -845,6 +949,8 @@
     img: "img/mattheson.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     nacionalidad: "Alemania",
+    generos: [],
+    audios: ["h.mp3"]
   }
 
 ];
@@ -876,14 +982,15 @@ function crearTarjeta(compositor) {
         ${
           audios.length > 0
             ? `
-              <div class="audio-controls">
-                <button class="play-btn" title="Reproducir / Pausar">
-                  <i class="fa fa-play"></i>
-                </button>
-                <button class="next-btn" title="Siguiente audio">
-                  <i class="fa fa-random"></i>
-                </button>
-              </div>
+            <div class="audio-controls">
+  <button class="play-btn" title="Reproducir / Pausar">
+    <i class="fa fa-play"></i>
+  </button>
+  <button class="next-btn" title="Siguiente audio">
+    <i class="fa fa-random"></i>
+  </button>
+</div>
+
               `
             : ''
         }
@@ -917,12 +1024,28 @@ function crearTarjeta(compositor) {
 
       // Crear y reproducir el nuevo audio
       reproductorActual = new Audio(audioURL);
+
+
+
+// const infoGlobal = document.getElementById('audio-global-info');
+// if (infoGlobal) {
+//   const nombreLimpio = audioURL.split('/').pop().replace('.mp3', '').replace(/_/g, ' ');
+//   const nombreCapitalizado = nombreLimpio.replace(/\b\w/g, c => c.toUpperCase());
+//   infoGlobal.textContent = `🎵 Reproduciendo: ${compositor.nombre} – ${nombreCapitalizado}`;
+//   infoGlobal.style.display = 'block';
+// }
+
+
+
+
       reproductorActual.play();
+      
       reproductorActual.addEventListener('ended', () => {
         if (btnPlay) btnPlay.querySelector('i').className = 'fa fa-play';
         reproductorActual = null;
         botonActivo = null;
         compositorActivo = null;
+ 
       });
 
       botonActivo = btnPlay;
@@ -971,15 +1094,7 @@ function obtenerTodosLosAudios() {
     .flatMap(comp => comp.audios || []);
 }
 
-function reproducirAudioAleatorioGlobal() {
-  const todosLosAudios = obtenerTodosLosAudios();
-  if (todosLosAudios.length === 0) return;
 
-  const nuevoAudio = todosLosAudios[Math.floor(Math.random() * todosLosAudios.length)];
-  audioActualGlobal = nuevoAudio;
-  reproductorGlobal.src = nuevoAudio;
-  reproductorGlobal.play();
-}
 
 // Al cargar la página, asignar un audio random para que play funcione desde el principio
 audioActualGlobal = obtenerTodosLosAudios()[0] || null;  // primer audio de la lista o null si no hay
@@ -1012,20 +1127,47 @@ tituloPrincipal.addEventListener('click', () => {
   }
 });
 
+
 function actualizarInfoAudioGlobal() {
   if (!audioActualGlobal) {
     infoAudioGlobal.textContent = 'No hay audio reproduciéndose';
     return;
   }
+
   const compositorActual = datosCompositores.find(comp =>
     (comp.audios || []).includes(audioActualGlobal)
   );
+
+  const nombreArchivo = audioActualGlobal.split('/').pop().replace('.mp3', '').replace(/_/g, ' ');
+  const nombreCapitalizado = nombreArchivo.replace(/\b\w/g, c => c.toUpperCase());
+
   if (compositorActual) {
-    infoAudioGlobal.textContent = `Reproduciendo: ${compositorActual.nombre}`;
+    infoAudioGlobal.textContent = `🎵 Reproduciendo: ${compositorActual.nombre} – ${nombreCapitalizado}`;
   } else {
-    infoAudioGlobal.textContent = 'Reproduciendo audio desconocido';
+    infoAudioGlobal.textContent = `🎵 Reproduciendo: ${nombreCapitalizado}`;
   }
 }
+
+// function actualizarInfoAudioGlobal() {
+//   if (!audioActualGlobal) {
+//     infoAudioGlobal.textContent = 'No hay audio reproduciéndose';
+//     return;
+//   }
+
+//   const compositorActual = datosCompositores.find(comp =>
+//     (comp.audios || []).includes(audioActualGlobal)
+//   );
+
+//   const nombreLimpio = audioActualGlobal.split('/').pop().replace('.mp3', '').replace(/_/g, ' ');
+//   const nombreCapitalizado = nombreLimpio.replace(/\b\w/g, c => c.toUpperCase());
+
+//   if (compositorActual) {
+//     infoAudioGlobal.textContent = `🎵 Reproduciendo: ${compositorActual.nombre} – ${nombreCapitalizado}`;
+//   } else {
+//     infoAudioGlobal.textContent = `🎵 Reproduciendo audio desconocido – ${nombreCapitalizado}`;
+//   }
+// }
+
 
 function reproducirAudioAleatorioGlobal() {
   const todosLosAudios = obtenerTodosLosAudios();
@@ -1036,8 +1178,8 @@ function reproducirAudioAleatorioGlobal() {
   }
 
   const nuevoAudio = todosLosAudios[Math.floor(Math.random() * todosLosAudios.length)];
-  audioActualGlobal = nuevoAudio;
   reproductorGlobal.src = nuevoAudio;
+  audioActualGlobal = nuevoAudio;
   reproductorGlobal.play();
   actualizarInfoAudioGlobal();
 }
@@ -1055,20 +1197,7 @@ function togglePlayPauseGlobal() {
   }
 }
 
-function actualizarInfoAudioGlobal() {
-  if (!audioActualGlobal) {
-    infoAudioGlobal.textContent = 'No hay audio reproduciéndose';
-    return;
-  }
-  const compositorActual = datosCompositores.find(comp =>
-    (comp.audios || []).includes(audioActualGlobal)
-  );
-  if (compositorActual) {
-    infoAudioGlobal.textContent = `🎵 Reproduciendo: ${compositorActual.nombre}`;
-  } else {
-    infoAudioGlobal.textContent = '🎵 Reproduciendo audio desconocido';
-  }
-}
+
 
 const contenedorGlobal = document.createElement('div');
 contenedorGlobal.className = 'audio-controls'; // para el mismo layout flex y gap
