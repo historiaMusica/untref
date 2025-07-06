@@ -78,7 +78,7 @@ body::before {
       gap: 15px;
       justify-content: center;
       perspective: 1000px;
-      background-color: #ffffff80;
+      background-color: #ffffff5e;
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
@@ -142,7 +142,7 @@ body::before {
   gap: 6px;
   padding: 6px 12px;
   font-size: 0.85rem;
-  background-color: #4CAF50;
+  background-color: #5f530c;
   color: white;
   border: none;
   border-radius: 6px;
@@ -155,7 +155,7 @@ body::before {
 }
 
 .play-btn:hover {
-  background-color: #388e3c;
+  background-color: #a79219;
 }
 
     .card-front img {
@@ -177,8 +177,8 @@ body::before {
     .base {
       width: 150px;
       height: 12px;
-      background: rgba(204, 204, 204, 0.981);
-      border-top: 2px solid rgba(170, 170, 170, 0.921);
+      background-color: #ffffff7b;
+            border-top: 2px solid rgba(170, 170, 170, 0);
       border-radius: 0 0 6px 6px;
       margin-top: -4px;
       z-index: -1;
@@ -205,7 +205,7 @@ body::before {
 }
 
 .audio-controls button {
-  background: #0077cc;
+  background-color: #5f530c;
   border: none;
   border-radius: 6px;
   padding: 8px;
@@ -216,7 +216,7 @@ body::before {
 }
 
 .audio-controls button:hover {
-  background: #005fa3;
+  background-color: #a79219;
 }
 
 .header-con-boton {
@@ -232,6 +232,7 @@ body::before {
   margin: 0;
   font-size: 2.4rem;
   color: #1c1c1c;
+  
 }
 
 #btn-global-play {
@@ -257,13 +258,13 @@ body::before {
   margin-bottom: 16px;
 } */
 #encabezado-global {
-  background-color: #ffffffb1;
+  background-color: #ffffff38;
 
   display: flex;
   justify-content: center; /* Centra todo el contenedor horizontalmente */
   align-items: center;     /* Centra verticalmente */
   gap: 3px;                  /* Sin espacio entre título y botón */
-  max-width: 1100px;
+  max-width: 1400px;
   width: 100%;
   padding: 0 2rem;
   box-sizing: border-box;
@@ -288,7 +289,7 @@ body::before {
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   padding: 0.3rem 0.8rem;
   border-radius: 0.5rem;
-  background-color: #007bff;
+  background-color: #5f530c;
   color: white;
   border: none;
   cursor: pointer;
@@ -301,7 +302,7 @@ body::before {
 }
 
 #botones-globales .play-btn:hover {
-  background-color: #0056b3;
+  background-color: #5f530c;
 }
 
 #botones-globales .play-btn i {
@@ -370,8 +371,16 @@ body::before {
 
 .bg-light {
     --bs-bg-opacity: 1;
-    background-color: #ffffffcb !important;
+    background-color: #ffffff7b !important;
 
+}
+
+#filtros {
+  background-color: #ffffff7b;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  max-width: 1400px;
+  padding: 5% !important;
 }
 
 @media (max-width: 998px) {
@@ -388,6 +397,31 @@ body::before {
     background-attachment: scroll; /* 🔄 importante para móviles */
   }
 }
+
+
+@media (max-width: 768px) {
+    #filtros {
+      padding: 15% !important;
+    }
+    #filtros .row {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #filtros .col-md-4 {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #filtros fieldset {
+      text-align: center;
+    }
+
+    /* #filtros .d-grid {
+      justify-items: center;
+    } */
+  }
+
 
 
   @media (max-width: 550px) {
@@ -437,14 +471,15 @@ body::before {
 
   <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
-  <div id="filtros" class="container my-4 p-4 border rounded bg-light">
+  <div id="filtros" class="container my-4 p-4">
     <div class="row g-4 text-center">
   
       <!-- Período -->
-      <div class="col-md-4 fs-sm">
+      <div class="col-12 col-md-4 fs-sm">
         <fieldset>
           <legend class="h6 fw-bold text-center mb-3">Período</legend>
           <div class="d-grid gap-1 text-start lh-sm">
+        
             <!-- ✅ Todos los labels sin scroll interno -->
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Edad Media">Edad Media</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars antiqua">Ars antiqua</label>
@@ -453,19 +488,27 @@ body::before {
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento arcaico">Renacimiento arcaico</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 1ra generación">Franco-flamenca 1ra gen.</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación">Franco-flamenca 2da gen.</label>
+              </div>
+              </fieldset>
+            </div>
+
+            <div class="col-12 col-md-4 fs-sm">
+              <fieldset>
+                <legend class="h6 fw-bold text-center mb-3 d-md-none">&nbsp;</legend> <!-- espacio en mobile -->
+                <div class="d-grid gap-1 text-start lh-sm">
+                  <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación">Franco-flamenca 2da gen.</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento escuelas nacionales">Escuelas nacionales</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento">Renacimiento</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco">Barroco</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco temprano">Barroco temprano</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco medio">Barroco medio</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco tardío">Barroco tardío</label>
-          </div>
+            </div>
         </fieldset>
       </div>
   
       <!-- Nacionalidad -->
-      <div class="col-md-4 fs-sm">
+      <div class="col-12 col-md-4 fs-sm">
         <fieldset>
           <legend class="h6 fw-bold text-center mb-3">Nacionalidad</legend>
           <div class="d-grid gap-1 text-start lh-sm">
@@ -481,7 +524,7 @@ body::before {
       </div>
   
       <!-- Género -->
-      <div class="col-md-4 fs-sm">
+      <!-- <div class="col-md-4 fs-sm">
         <fieldset>
           <legend class="h6 fw-bold text-center mb-3">Género</legend>
           <div class="d-grid gap-1 text-start lh-sm">
@@ -500,7 +543,7 @@ body::before {
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="genero" value="Fauxbourdon">Fauxbourdon</label>
           </div>
         </fieldset>
-      </div>
+      </div> -->
   
     </div>
   </div>
