@@ -375,12 +375,67 @@ body::before {
 
 }
 
+.aclaracion-filtros {
+  font-size: 0.85rem;
+  font-style: italic;
+  margin-top: 2rem;
+  text-align: right !important;
+}
+
 #filtros {
   background-color: #ffffff7b;
   border-radius: 12px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
   max-width: 1400px;
-  padding: 5% !important;
+  padding-top: 5% !important;
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+  margin-bottom: 0;
+
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden; 
+}
+
+.p-4 {
+  padding: 0.5rem !important ;
+}
+
+/* #filtros.hidden-mobile {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 !important;
+    pointer-events: none;
+  } */
+
+  #filtros.hidden-mobile {
+    display: none;
+  }
+
+  #toggle-filtros {
+    display: block;           /* Que sea bloque para que tome todo el ancho disponible */
+  margin-bottom: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  padding-top: 50px;
+  font-size: 1rem;
+  color: #74460a;
+  cursor: pointer;
+  text-align: left !important;
+  font-weight: 600;
+  width: fit-content;      /* El ancho se adapta al texto */
+
+}
+#toggle-filtros:hover {
+  text-decoration: underline;
+}
+
+#toggle-filtros {
+  align-self: flex-start;  /* Para contenedores flex */
+}
+
+.my-4{
+  margin-top: 0 !important;
 }
 
 @media (max-width: 998px) {
@@ -390,6 +445,7 @@ body::before {
 
   }
 
+
   @media (max-width: 768px) {
     body::before {
     background-size: cover;
@@ -398,29 +454,59 @@ body::before {
   }
 }
 
+@media (min-width: 769px) {
+  #toggle-filtros {
+    display: none;
+  }
+
+  #filtros {
+    display: block !important;
+  }
+}
 
 @media (max-width: 768px) {
-    #filtros {
-      padding: 15% !important;
-    }
-    #filtros .row {
-      flex-direction: column;
-      align-items: center;
-    }
+  #toggle-filtros {
+    display: inline-block;
+  }
 
-    #filtros .col-md-4 {
-      width: 100%;
-      max-width: 500px;
-    }
+  #filtros.hidden-mobile {
+    display: none;
+  }
 
-    #filtros fieldset {
-      text-align: center;
-    }
+  #filtros {
+    padding: 15%;
+  }
+
+  #filtros .row {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  #filtros .col-md-4 {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .filtros-row > .col-md-4:nth-child(1),
+  .filtros-row > .col-md-4:nth-child(2) {
+    padding-bottom: 0;
+    margin-bottom: -16px; /* quita el espacio entre columnas de "período" */
+  }
+
+  #filtros fieldset {
+    text-align: center;
+  }
+
+  .my-4{
+  margin-top: 0 !important;
+}
+
+  }
 
     /* #filtros .d-grid {
       justify-items: center;
     } */
-  }
+  
 
 
 
@@ -471,34 +557,46 @@ body::before {
 
   <!-- <h1>Edad Media, Renacimiento y Barroco</h1> -->
 
+  <button id="toggle-filtros" class="btn btn-secondary d-md-none mb-3">
+    Mostrar/ocultar filtros
+  </button>
+
+
   <div id="filtros" class="container my-4 p-4">
-    <div class="row g-4 text-center">
+    
+    <div class="row g-4 text-center filtros-row">
   
       <!-- Período -->
       <div class="col-12 col-md-4 fs-sm">
         <fieldset>
-          <legend class="h6 fw-bold text-center mb-3">Período</legend>
+          <legend class="h6 fw-bold text-center mb-3">Período/s o escuela</legend>
           <div class="d-grid gap-1 text-start lh-sm">
         
             <!-- ✅ Todos los labels sin scroll interno -->
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Edad Media">Edad Media</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars antiqua">Ars antiqua</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars nova">Ars nova</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars nova italiano">Ars nova italiano</label> 
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Ars subtilior">Ars subtilior</label> 
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Movimiento trovadoresco">Movimiento trovadoresco</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Troveros">Troveros</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento">Renacimiento</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento arcaico">Renacimiento arcaico</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 1ra generación">Franco-flamenca 1ra gen.</label>
+            
               </div>
               </fieldset>
             </div>
 
             <div class="col-12 col-md-4 fs-sm">
               <fieldset>
-                <legend class="h6 fw-bold text-center mb-3 d-md-none">&nbsp;</legend> <!-- espacio en mobile -->
-                <div class="d-grid gap-1 text-start lh-sm">
-                  <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca - 2da generación">Franco-flamenca 2da gen.</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento escuelas nacionales">Escuelas nacionales</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento">Renacimiento</label>
+                <legend class="h6 fw-bold text-center mb-3 d-none d-md-block invisible">Período</legend>
+    <div class="d-grid gap-1 text-start lh-sm">
+           
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuelas nacionales">Escuelas nacionales</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela veneciana">Escuela veneciana</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela española">Escuela española</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela inglesa">Escuela inglesa</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco">Barroco</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco temprano">Barroco temprano</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco medio">Barroco medio</label>
@@ -507,18 +605,18 @@ body::before {
         </fieldset>
       </div>
   
-      <!-- Nacionalidad -->
+      <!-- lugar -->
       <div class="col-12 col-md-4 fs-sm">
         <fieldset>
-          <legend class="h6 fw-bold text-center mb-3">Nacionalidad</legend>
+          <legend class="h6 fw-bold text-center mb-3">Lugar de influencia</legend>
           <div class="d-grid gap-1 text-start lh-sm">
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Alemania">Alemania</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Francia">Francia</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Italia">Italia</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Flandes">Flandes</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Inglaterra">Inglaterra</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="España">España</label>
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="nacionalidad" value="Países Bajos">Países Bajos</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Alemania">Alemania</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Francia">Francia</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Italia">Italia</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Flandes">Flandes</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Inglaterra">Inglaterra</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="España">España</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="lugar" value="Países Bajos">Países Bajos</label>
           </div>
         </fieldset>
       </div>
@@ -546,6 +644,10 @@ body::before {
       </div> -->
   
     </div>
+
+    <p class="aclaracion-filtros text-left text-muted small mb-2">
+      *Los filtros no son excluyentes: se muestran compositores que coincidan con al menos uno de ellos. Seleccionar de a uno a la vez.
+    </p>
   </div>
   
   
@@ -566,7 +668,7 @@ body::before {
     nombre: "Hildegarda von Bingen",
     img: "img/hildegard_von_bingen.jpg",
     periodo: "Edad Media",
-    nacionalidad: "Alemania",
+    lugar: "Alemania",
     generos: ["Organum/Discantus/Conductus"],
     audios: ["audio/Canzoneta.mp3", "audio/02.mp3", "audio/03.mp3"]
   },
@@ -575,7 +677,7 @@ body::before {
     nombre: "Leonin",
     img: "img/leoninus.jpg",
     periodo: ["Edad Media", "Ars antiqua"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Organum/Discantus/Conductus"],
     audios: ["audio/05.mp3", "audio/06.mp3", "audio/07.mp3", "audio/08.mp3"]
   },
@@ -584,7 +686,7 @@ body::before {
     nombre: "Perotin",
     img: "img/perotinus.jpg",
     periodo: ["Edad Media", "Ars antiqua"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Organum/Discantus/Conductus"],
     audios: ["audio/09.mp3", "audio/10.mp3", "audio/11.mp3", "audio/12.mp3"]
   },
@@ -592,17 +694,18 @@ body::before {
   {
     nombre: "Petrus de Cruce",
     img: "img/petrus.jpg",
-    periodo: ["Edad Media", "Ars antiqua"],
-    nacionalidad: "Francia",
+    periodo: ["Edad Media", "Ars antiqua", "Ars Nova"],
+    lugar: "Francia",
     generos: ["Motete"],
     audios: ["audio/13.mp3", "audio/14.mp3", "audio/15.mp3", "audio/16.mp3"]
   },
 
+
   {
     nombre: "Adam de la Halle",
     img: "img/halle.jpg",
-    periodo: ["Edad Media", "Movimiento trovadoresco"],
-    nacionalidad: "Francia",
+    periodo: ["Edad Media", "Movimiento trovadoresco", "Troveros"],
+    lugar: "Francia",
     generos: ["Canción polifónica medieval", "Rondeau"],
     audios: ["audio/17.mp3", "audio/18.mp3", "audio/19.mp3", "audio/20.mp3"]
   },
@@ -611,7 +714,7 @@ body::before {
     nombre: "Condesa de Día",
     img: "img/condesa.jpg",
     periodo: ["Edad Media", "Movimiento trovadoresco"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Canción polifónica medieval"],
     audios: ["audio/21.mp3", "audio/22.mp3", "audio/23.mp3", "audio/24.mp3"]
   },
@@ -620,7 +723,7 @@ body::before {
     nombre: "Philippe de Vitry",
     img: "img/devitry.jpg",
     periodo: ["Edad Media", "Ars nova"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Motete"],
     audios: ["audio/25.mp3", "audio/26.mp3", "audio/27.mp3", "audio/28.mp3"]
   }, // hugo princeps cum structura
@@ -629,7 +732,7 @@ body::before {
     nombre: "Guillaume de Machaut",
     img: "img/guillaume_de_machaut.jpg",
     periodo: ["Edad Media", "Ars nova"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Motete", "Canción polifónica medieval", "Misa", "Balada"],
     audios: ["audio/29.mp3", "audio/30.mp3", "audio/31.mp3", "audio/32.mp3"]
   }, // Nes que on porroit les estoilles / De fortune me doi plaindre et loer
@@ -637,17 +740,27 @@ body::before {
   {
     nombre: "Matteo da Perugia",
     img: "img/perugia.jpg",
-    periodo: ["Edad Media", "Ars nova"],
-    nacionalidad: "Italia",
+    periodo: ["Edad Media", "Ars nova", "Ars subtilior"],
+    lugar: "Italia",
     generos: ["Canción polifónica medieval", "Virelay", "Ballata", "Motete", "Rondeau"],
     audios: ["audio/33.mp3", "audio/34.mp3", "audio/35.mp3", "audio/36.mp3"]
   },
 
   {
+    nombre: "Johannes Ciconia",
+    img: "img/ciconia.jpg",
+    periodo: ["Edad Media", "Ars nova", "Ars subtilior"],
+    lugar: "Italia",
+    generos: [],
+    audios: []
+  },
+
+
+  {
     nombre: "Giovanni da Cascia",
     img: "img/daCascia.jpg",
-    periodo: ["Edad Media", "Ars nova"],
-    nacionalidad: "Italia",
+    periodo: ["Edad Media", "Ars nova", "Ars nova italiano"],
+    lugar: "Italia",
     generos: ["Canción polifónica medieval", "Madrigal medieval", "Caccia"],
     audios: ["audio/37.mp3", "audio/38.mp3", "audio/39.mp3", "audio/40.mp3"]
   },
@@ -655,8 +768,8 @@ body::before {
   {
     nombre: "Francesco Landini",
     img: "img/landini.jpg",
-    periodo: ["Edad Media", "Ars nova"],
-    nacionalidad: "Italia",
+    periodo: ["Edad Media", "Ars nova", "Ars nova italiano"],
+    lugar: "Italia",
     generos: ["Canción polifónica medieval", "Madrigal medieval", "Ballata"],
     audios: ["audio/41.mp3", "audio/42.mp3", "audio/43.mp3", "audio/44.mp3"]
   }, // ecco la primavera
@@ -669,7 +782,7 @@ body::before {
     nombre: "John Dunstable",
     img: "img/dunstable.jpg",
     periodo: ["Renacimiento arcaico", "Renacimiento"],
-    nacionalidad: "Inglaterra",
+    lugar: "Inglaterra",
     generos: ["Motete", "Misa"],
     audios: ["audio/45.mp3", "audio/46.mp3", "audio/47.mp3", "audio/48.mp3"]
   }, // regina celi / ascendit christus
@@ -678,7 +791,7 @@ body::before {
     nombre: "Gilles Binchois",
     img: "img/binchois.jpg",
     periodo: ["Renacimiento arcaico", "Renacimiento"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Motete", "Misa"],
     audios: ["audio/49.mp3", "audio/50.mp3", "audio/51.mp3", "audio/52.mp3"]
   }, // adieu mon amoreuse joye
@@ -687,7 +800,7 @@ body::before {
     nombre: "Guillaume Dufay",
     img: "img/dufay.jpg",
     periodo: ["Renacimiento arcaico", "Renacimiento"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Motete", "Misa", "Hoquetus", "Fauxbourdon"],
     audios: ["audio/53.mp3", "audio/54.mp3", "audio/55.mp3", "audio/56.mp3"]
   }, // ave regina coelorum
@@ -695,8 +808,8 @@ body::before {
   {
     nombre: "Johannes Ockeghem",
     img: "img/ockeghem.jpg",
-    periodo: ["Escuela franco-flamenca - 1ra generación", "Renacimiento"],
-    nacionalidad: "Flandes",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
+    lugar: "Francia",
     generos: ["Motete", "Misa", "Chanson"],
     audios: ["audio/57.mp3", "audio/58.mp3", "audio/59.mp3", "audio/60.mp3"]
   },
@@ -705,7 +818,7 @@ body::before {
     nombre: "Antoine Busnois",
     img: "img/busnois.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: ["Motete"],
     audios: ["audio/61.mp3", "audio/62.mp3", "audio/63.mp3", "audio/64.mp3"]
   }, // a vous sans autre
@@ -713,8 +826,8 @@ body::before {
   {
     nombre: "Josquin des Prez",
     img: "img/josquin_des_prez.jpg",
-    periodo: ["Escuela franco-flamenca - 2da generación", "Renacimiento"],
-    nacionalidad: "Flandes",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
+    lugar: "Francia",
     generos: ["Motete", "Misa", "Chanson", "Frottola"],
     audios: ["audio/65.mp3", "audio/66.mp3", "audio/67.mp3", "audio/68.mp3"]
   },
@@ -722,26 +835,18 @@ body::before {
   {
     nombre: "Jacob Obrecht",
     img: "img/obrecht.jpg",
-    periodo: ["Renacimiento"],
-    nacionalidad: "Flandes",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"],
+    lugar: "Flandes",
     generos: ["Motete", "Misa", "Chanson"],
     audios: ["audio/69.mp3", "audio/70.mp3", "audio/71.mp3", "audio/72.mp3"]
   },
 
-  {
-    nombre: "Johannes Ciconia",
-    img: "img/ciconia.jpg",
-    periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Italia",
-    generos: [],
-    audios: []
-  }, // o rosa bella
 
  {
     nombre: "Nicolas Gombert",
     img: "img/gombert.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Flandes",
+    lugar: "Flandes",
     generos: [],
     audios: []
   }, 
@@ -750,7 +855,7 @@ body::before {
     nombre: "Jacques Clément",
     img: "img/clement.jpg",
     periodo: ["Escuela franco-flamenca", "Renacimiento"],
-    nacionalidad: "Flandes",
+    lugar: "Flandes",
     generos: [],
     audios: []
   }, 
@@ -760,8 +865,8 @@ body::before {
   {
     nombre: "Adrian Willaert",
     img: "img/willaert.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana"],
+    lugar: "Italia",
     generos: [],
     audios: []
   }, // escuela veneciana
@@ -769,8 +874,8 @@ body::before {
   {
     nombre: "Andrea Gabrieli",
     img: "img/andreagabrieli.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana"],
+    lugar: "Italia",
     generos: [],
     audios: []
   }, // escuela veneciana
@@ -778,8 +883,8 @@ body::before {
   {
     nombre: "Giovanni Gabrieli",
     img: "img/gabrieli.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana", "Barroco", "Barroco temprano"],
+    lugar: "Italia",
     generos: [],
     audios: []
   }, // escuela veneciana
@@ -787,8 +892,8 @@ body::before {
   {
     nombre: "Orlando Di Lasso",
     img: "img/dilasso.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuela franco-flamenca", "Renacimiento"], 
+    lugar: "Italia",
     generos: [],
     audios: []
   }, // CONTRARREFORMA
@@ -796,8 +901,8 @@ body::before {
   {
     nombre: "G. Pierluigi da Palestrina",
     img: "img/palestrina.jpg",
-    periodo: "Renacimiento",
-    nacionalidad: "Italia",
+    periodo: "Renacimiento", //escuela romana??
+    lugar: "Italia",
     generos: ["Misa", "Canción"],
     audios: []
   }, // CONTRARREFORMA
@@ -805,8 +910,8 @@ body::before {
   {
     nombre: "Tomás Luis de Victoria",
     img: "img/victoria.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
+    lugar: "España",
     generos: [],
     audios: []
   }, // CONTRARREFORMA
@@ -817,8 +922,8 @@ body::before {
   {
     nombre: "Cristóbal de Morales",
     img: "img/morales.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
+    lugar: "España",
     generos: [],
     audios: []
   }, // CONTRARREFORMA
@@ -826,8 +931,8 @@ body::before {
   {
     nombre: "Francisco Guerrero",
     img: "img/guerrero.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
+    lugar: "España",
     generos: [],
     audios: []
   }, // CONTRARREFORMA
@@ -835,8 +940,8 @@ body::before {
   {
     nombre: "Juan del Encina",
     img: "img/delencina.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "España",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
+    lugar: "España",
     generos: [],
     audios: []
   },
@@ -846,8 +951,8 @@ body::before {
   {
     nombre: "John Dowland",
     img: "img/dowland.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Inglaterra",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa", "Barroco temprano", "Barroco"],
+    lugar: "Inglaterra",
     generos: [],
     audios: []
   },
@@ -855,8 +960,8 @@ body::before {
   {
     nombre: "Thomas Morley",
     img: "img/morley.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Inglaterra",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
+    lugar: "Inglaterra",
     generos: ["Madrigal"],
     audios: []
   },
@@ -864,8 +969,8 @@ body::before {
   {
     nombre: "William Byrd",
     img: "img/byrd.jpg",
-    periodo: "Renacimiento",
-    nacionalidad: "Inglaterra",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
+    lugar: "Inglaterra",
     generos: ["Misa", "Canción"],
     audios: []
   }, // REFORMA
@@ -873,8 +978,8 @@ body::before {
   {
     nombre: "Thomas Tallis",
     img: "img/tallis.jpg",
-    periodo: "Renacimiento",
-    nacionalidad: "Inglaterra",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
+    lugar: "Inglaterra",
     generos: ["Motete", "Misa"],
     audios: []
   }, // REFORMA
@@ -882,8 +987,8 @@ body::before {
   {
     nombre: "Clement Janequin",
     img: "img/janequin.jpg",
-    periodo:["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Francia",
+    periodo:["Escuelas nacionales", "Renacimiento"],
+    lugar: "Francia",
     generos: ["Chanson"],
     audios: []
   },
@@ -893,8 +998,8 @@ body::before {
   {
     nombre: "Philippe Verdelot",
     img: "img/verdelot.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Francia",
+    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   }, //1er ESTADIO
@@ -902,8 +1007,8 @@ body::before {
     {
     nombre: "Jacques Arcadelt",
     img: "img/arcadelt.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Francia",
+    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   }, //2do ESTADIO
@@ -911,8 +1016,8 @@ body::before {
     {
     nombre: "Cypriano de Rore",
     img: "img/rore.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Francia",
+    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   },
@@ -923,8 +1028,8 @@ body::before {
     {
     nombre: "Luca Marenzio",
     img: "img/marenzio.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento"],
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   },
@@ -932,8 +1037,8 @@ body::before {
       {
     nombre: "Carlo Gesualdo",
     img: "img/gesualdo.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento"],
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   },
@@ -941,8 +1046,8 @@ body::before {
       {
     nombre: "Luzzasco Luzzaschi",
     img: "img/luzzaschi.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento"],
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   },
@@ -950,8 +1055,8 @@ body::before {
         {
     nombre: "Claudio Monteverdi",
     img: "img/monteverdi.jpg",
-    periodo: ["Renacimiento escuelas nacionales", "Renacimiento", "Barroco temprano"],
-    nacionalidad: "Italia",
+    periodo: ["Escuelas nacionales", "Renacimiento", "Barroco temprano", "Barroco"],
+    lugar: "Italia",
     generos: ["Madrigal"],
     audios: []
   },
@@ -967,7 +1072,7 @@ body::before {
     nombre: "Giulio Caccini",
     img: "img/caccini.jpg",
     periodo: ["Barroco temprano", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -976,7 +1081,7 @@ body::before {
     nombre: "Girolamo Frescobaldi",
     img: "img/frescobaldi.jpg",
     periodo: ["Barroco temprano", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -985,7 +1090,7 @@ body::before {
     nombre: "Jan Pieterszoon Sweelinck",
     img: "img/sweelinck.jpg",
     periodo: ["Barroco temprano", "Barroco"],
-    nacionalidad: "Países Bajos",
+    lugar: "Países Bajos",
     generos: [],
     audios: []
   },
@@ -994,7 +1099,7 @@ body::before {
     nombre: "Dietrich Buxtehude",
     img: "img/buxtehude.jpg",
     periodo: ["Barroco medio", "Barroco"],
-    nacionalidad: "Alemania",
+    lugar: "Alemania",
     generos: [],
     audios: []
   },
@@ -1005,7 +1110,7 @@ body::before {
     nombre: "Alessandro Scarlatti",
     img: "img/scarlatti.jpg",
     periodo: ["Barroco medio", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1014,7 +1119,7 @@ body::before {
     nombre: "Jean-Baptiste Lully",
     img: "img/lully.jpg",
     periodo: ["Barroco medio", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Francia",
     generos: [],
     audios: []
   },
@@ -1023,7 +1128,7 @@ body::before {
     nombre: "Henry Purcell",
     img: "img/purcell.jpg",
     periodo: ["Barroco medio", "Barroco"],
-    nacionalidad: "Inglaterra",
+    lugar: "Inglaterra",
     generos: [],
     audios: []
   },
@@ -1032,7 +1137,7 @@ body::before {
     nombre: "Georg Friedrich Händel",
     img: "img/haendel.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Alemania",
+    lugar: "Inglaterra",
     generos: [],
     audios: []
   },
@@ -1041,7 +1146,7 @@ body::before {
     nombre: "Arcangelo Corelli",
     img: "img/corelli.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1050,7 +1155,7 @@ body::before {
     nombre: "Domenico Scarlatti",
     img: "img/dscarlatti.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1059,7 +1164,7 @@ body::before {
     nombre: "Leonardo Vinci",
     img: "img/vinci.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1068,7 +1173,7 @@ body::before {
     nombre: "Antonio Vivaldi",
     img: "img/vivaldi.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1077,7 +1182,7 @@ body::before {
     nombre: "Jean-Philippe Rameau",
     img: "img/rameau.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: [],
     audios: []
   },
@@ -1086,7 +1191,7 @@ body::before {
     nombre: "Giuseppe Torelli",
     img: "img/torelli.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Italia",
+    lugar: "Italia",
     generos: [],
     audios: []
   },
@@ -1095,7 +1200,7 @@ body::before {
     nombre: "François Couperin",
     img: "img/couperin.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Francia",
+    lugar: "Francia",
     generos: [],
     audios: []
   },
@@ -1104,7 +1209,7 @@ body::before {
     nombre: "Johann Sebastian Bach",
     img: "img/bach.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Alemania",
+    lugar: "Alemania",
     generos: [],
     audios: []
   },
@@ -1113,7 +1218,7 @@ body::before {
     nombre: "Johann Mattheson",
     img: "img/mattheson.jpg",
     periodo: ["Barroco tardío", "Barroco"],
-    nacionalidad: "Alemania",
+    lugar: "Alemania",
     generos: [],
     audios: ["h.mp3"]
   }
@@ -1136,7 +1241,7 @@ function crearTarjeta(compositor) {
   const audios = compositor.audios || [];
 
   card.dataset.periodo = JSON.stringify(periodos);
-  card.dataset.nacionalidad = compositor.nacionalidad;
+  card.dataset.lugar = compositor.lugar;
   card.dataset.generos = JSON.stringify(generos);
 
   card.innerHTML = `
@@ -1407,7 +1512,7 @@ datosCompositores.forEach(compositor => {
 function obtenerFiltrosCheckbox() {
   const filtros = {
     periodo: [],
-    nacionalidad: [],
+    lugar: [],
     genero: []
   };
 
@@ -1429,14 +1534,14 @@ function aplicarFiltrosCheckbox() {
   const tarjetas = document.querySelectorAll('.card');
   tarjetas.forEach(card => {
     const datosPeriodo = JSON.parse(card.dataset.periodo);
-    const datosNacionalidad = card.dataset.nacionalidad;
+    const datoslugar = card.dataset.lugar;
     const datosGeneros = JSON.parse(card.dataset.generos);
 
     const coincidePeriodo = filtros.periodo.length === 0 || filtros.periodo.some(f => datosPeriodo.includes(f));
-    const coincideNacionalidad = filtros.nacionalidad.length === 0 || filtros.nacionalidad.includes(datosNacionalidad);
+    const coincidelugar = filtros.lugar.length === 0 || filtros.lugar.includes(datoslugar);
     const coincideGenero = filtros.genero.length === 0 || datosGeneros.some(g => filtros.genero.includes(g));
 
-    card.style.display = (coincidePeriodo && coincideNacionalidad && coincideGenero) ? '' : 'none';
+    card.style.display = (coincidePeriodo && coincidelugar && coincideGenero) ? '' : 'none';
   });
 }
 
@@ -1488,6 +1593,19 @@ window.addEventListener('keydown', (e) => {
 //   };
 // });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.getElementById("toggle-filtros");
+  const filtros = document.getElementById("filtros");
+
+  // Al cargar, ocultar filtros y poner texto "Mostrar filtros"
+  filtros.classList.add("hidden-mobile");
+  toggleBtn.textContent = "Mostrar filtros";
+
+  toggleBtn.addEventListener("click", () => {
+    const oculto = filtros.classList.toggle("hidden-mobile");
+    toggleBtn.textContent = oculto ? "Mostrar filtros" : "Ocultar filtros";
+  });
+});
 
   </script>
 
