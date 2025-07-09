@@ -582,6 +582,8 @@ body::before {
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Troveros">Troveros</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento">Renacimiento</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Renacimiento arcaico">Renacimiento arcaico</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
+
             
               </div>
               </fieldset>
@@ -592,11 +594,11 @@ body::before {
                 <legend class="h6 fw-bold text-center mb-3 d-none d-md-block invisible">Período</legend>
     <div class="d-grid gap-1 text-start lh-sm">
            
-            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela franco-flamenca">Escuela franco-flamenca</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuelas nacionales">Escuelas nacionales</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela veneciana">Escuela veneciana</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela española">Escuela española</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Escuela inglesa">Escuela inglesa</label>
+            <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Madrigalistas">Madrigalistas</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco">Barroco</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco temprano">Barroco temprano</label>
             <label class="form-check-label"><input class="form-check-input me-2" type="checkbox" name="periodo" value="Barroco medio">Barroco medio</label>
@@ -646,7 +648,7 @@ body::before {
     </div>
 
     <p class="aclaracion-filtros text-left text-muted small mb-2">
-      *Los filtros no son excluyentes: se muestran compositores que coincidan con al menos uno de ellos. Seleccionar de a uno a la vez.
+      *Los filtros <bold>no son excluyentes</bold>: se muestran compositores que coincidan con al menos uno de ellos. SELECCIONAR DE A UNO A LA VEZ.
     </p>
   </div>
   
@@ -678,7 +680,7 @@ body::before {
     img: "img/leoninus.jpg",
     periodo: ["Edad Media", "Ars antiqua"],
     lugar: "Francia",
-    generos: ["Organum/Discantus/Conductus"],
+    generos: ["Organum/Discantus/Conductus", "Motete"],
     audios: ["audio/Pascha Nostrum.mp3", "audio/Haec dies.mp3"]
   },
 
@@ -687,7 +689,7 @@ body::before {
     img: "img/perotinus.jpg",
     periodo: ["Edad Media", "Ars antiqua"],
     lugar: "Francia",
-    generos: ["Organum/Discantus/Conductus"],
+    generos: ["Organum/Discantus/Conductus", "Motete"],
     audios: ["audio/Beata Viscera.mp3", "audio/Sederunt Principes.mp3", "audio/Viderunt Omnes.mp3"]
   },
 
@@ -704,7 +706,7 @@ body::before {
   {
     nombre: "Adam de la Halle",
     img: "img/halle.jpg",
-    periodo: ["Edad Media", "Movimiento trovadoresco", "Troveros"],
+    periodo: ["Edad Media", "Movimiento trovadoresco"],
     lugar: "Francia",
     generos: ["Canción polifónica medieval", "Rondeau"],
     audios: ["audio/Le jeu de Robin et Marion.mp3", "audio/Tant con je vivrai.mp3", "audio/Qui a droit veut amours servir.mp3", "audio/Entre Adan et Hanikiel.mp3"]
@@ -724,7 +726,7 @@ body::before {
     img: "img/devitry.jpg",
     periodo: ["Edad Media", "Ars nova"],
     lugar: "Francia",
-    generos: ["Motete"],
+    generos: ["Motete", "Formas fijas"],
     audios: ["audio/Cum statua.mp3", "audio/Quoniam secta latronum.mp3", "audio/In Arboris.mp3", "audio/Maria virgo virginum.mp3"]
   }, // hugo princeps cum structura
 
@@ -733,7 +735,7 @@ body::before {
     img: "img/guillaume_de_machaut.jpg",
     periodo: ["Edad Media", "Ars nova"],
     lugar: "Francia",
-    generos: ["Motete", "Canción polifónica medieval", "Misa", "Balada"],
+    generos: ["Motete", "Canción polifónica medieval", "Misa", "Balada", "Formas fijas"],
     audios: ["audio/La Messe de Nostre Dame - Agnus Dei.mp3", "audio/La Messe de Nostre Dame - Kyrie.mp3", "audio/Ballade - Doulz amis.mp3", "audio/Qui es promesse/Ha! Fortune.mp3"]
   }, // Nes que on porroit les estoilles / De fortune me doi plaindre et loer
 
@@ -864,7 +866,7 @@ body::before {
   {
     nombre: "Adrian Willaert",
     img: "img/willaert.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana"],
+    periodo: ["Escuelas nacionales", "Escuela franco-flamenca", "Renacimiento", "Escuela veneciana"],
     lugar: "Italia",
     generos: [],
     audios: ["audio/Aspro core et selvaggio.mp3", "audio/O dolce vita mia.mp3"]
@@ -873,16 +875,16 @@ body::before {
   {
     nombre: "Andrea Gabrieli",
     img: "img/andreagabrieli.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana"],
+    periodo: ["Escuelas nacionales", "Escuela franco-flamenca", "Renacimiento", "Escuela veneciana"],
     lugar: "Italia",
     generos: [],
-    audios: ["audio/Jubilate Deo.mp3"]
+    audios: ["audio/Jubilate Deo.mp3", "audio/Nativitas tua Dei genitrix.mp3"]
   }, // escuela veneciana
 
   {
     nombre: "Giovanni Gabrieli",
     img: "img/gabrieli.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela veneciana", "Barroco", "Barroco temprano"],
+    periodo: ["Escuelas nacionales", "Escuela franco-flamenca", "Renacimiento", "Escuela veneciana", "Barroco", "Barroco temprano"],
     lugar: "Italia",
     generos: [],
     audios: ["audio/O Magnum Mysterium.mp3", "audio/Canzon duodecimi.mp3", "audio/Omnes gentes.mp3"]
@@ -894,25 +896,25 @@ body::before {
     periodo: ["Escuela franco-flamenca", "Renacimiento"], 
     lugar: "Italia",
     generos: [],
-    audios: []
+    audios: ["audio/O la o che bon echo.mp3", "audio/Justorum animæ.mp3", "audio/Matona, mia cara.mp3"]
   }, // CONTRARREFORMA
 
   {
     nombre: "G. Pierluigi da Palestrina",
     img: "img/palestrina.jpg",
-    periodo: "Renacimiento", //escuela romana??
+    periodo: ["Escuela franco-flamenca", "Renacimiento"], //escuela romana??
     lugar: "Italia",
     generos: ["Misa", "Canción"],
-    audios: ["audio/Sicut cervus.mp3"]
+    audios: ["audio/Sicut cervus.mp3", "audio/Exsultate Deo.mp3", "audio/Veni Creator Spiritus.mp3"]
   }, // CONTRARREFORMA
 
   {
     nombre: "Tomás Luis de Victoria",
     img: "img/victoria.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
+    periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española", "Escuela franco-flamenca"],
     lugar: "España",
     generos: [],
-    audios: ["audio/Ave Maria.mp3"]
+    audios: ["audio/Ave Maria.mp3", "audio/O Vos Omnes.mp3", "audio/O sacrum convivium.mp3"]
   }, // CONTRARREFORMA
 
 
@@ -924,7 +926,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
     lugar: "España",
     generos: [],
-    audios: []
+    audios: ["audio/Misa Mille Regretz - Kyrie.mp3", "audio/Missa Pro Defunctis - V Offertorium.mp3"]
   }, // CONTRARREFORMA
 
   {
@@ -933,7 +935,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
     lugar: "España",
     generos: [],
-    audios: []
+    audios: ["audio/Prado Verde Y Florido.mp3", "audio/Ojos Claros.mp3"]
   }, // CONTRARREFORMA
 
   {
@@ -942,7 +944,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela española"],
     lugar: "España",
     generos: [],
-    audios: ["audio/Hoy comamos y bebamos.mp3"]
+    audios: ["audio/Hoy comamos y bebamos.mp3", "audio/Tan buen ganadico.mp3"]
   },
 
 
@@ -953,7 +955,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa", "Barroco temprano", "Barroco"],
     lugar: "Inglaterra",
     generos: [],
-    audios: []
+    audios: ["audio/Flow my tears.mp3", "audio/Can she excuse my wrongs.mp3"]
   },
 
   {
@@ -962,7 +964,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
     lugar: "Inglaterra",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Sing we and chant it.mp3", "audio/April Is In My Mistress' Face.mp3"]
   },
 
   {
@@ -971,7 +973,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
     lugar: "Inglaterra",
     generos: ["Misa", "Canción"],
-    audios: []
+    audios: ["audio/Ave verum corpus.mp3", "audio/Byrd - O magnum mysterium.mp3"]
   }, // REFORMA
 
   {
@@ -980,7 +982,7 @@ body::before {
     periodo: ["Escuelas nacionales", "Renacimiento", "Escuela inglesa"],
     lugar: "Inglaterra",
     generos: ["Motete", "Misa"],
-    audios: []
+    audios: ["audio/If ye love me.mp3", "audio/Tallis - O sacrum convivium.mp3"]
   }, // REFORMA
 
   {
@@ -989,7 +991,7 @@ body::before {
     periodo:["Escuelas nacionales", "Renacimiento"],
     lugar: "Francia",
     generos: ["Chanson"],
-    audios: []
+    audios: ["audio/O Souverain Pasteur et Maistre.mp3", "audio/Plourer, gémir et larmoyer me faut.mp3"]
   },
 
 
@@ -997,28 +999,28 @@ body::before {
   {
     nombre: "Philippe Verdelot",
     img: "img/verdelot.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"], //"Escuela veneciana"??
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: ["audio/O dolce nocte.mp3"]
+    audios: ["audio/O dolce nocte.mp3", "audio/Dormend'un giorno a Baia.mp3"]
   }, //1er ESTADIO
 
     {
     nombre: "Jacques Arcadelt",
     img: "img/arcadelt.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"], //"Escuela veneciana"??
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Il bianco e dolce cigno.mp3", "audio/Arcadelt - Ave Maria.mp3"]
   }, //2do ESTADIO
 
     {
     nombre: "Cypriano de Rore",
     img: "img/rore.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"], //"Escuela veneciana"??
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"], //"Escuela veneciana"??
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Cantai mentre ch'i arsi.mp3", "audio/Hor che'l ciel e la terra.mp3"]
   },
 
 
@@ -1027,37 +1029,37 @@ body::before {
     {
     nombre: "Luca Marenzio",
     img: "img/marenzio.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"],
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"],
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Solo e pensoso i piú deserti campi.mp3", "audio/Crudel, acerba, inesorabile morte.mp3"]
   },
   
       {
     nombre: "Carlo Gesualdo",
     img: "img/gesualdo.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"],
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"],
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: ["audio/Sesto libro di madrigali - XVII Moro, lasso, al mio duolo.mp3"]
+    audios: ["audio/Sesto libro di madrigali - XVII Moro, lasso, al mio duolo.mp3", "Sesto libro di madrigali_ VI _Io parto_ e non più dissi.mp3"]
   },
 
       {
     nombre: "Luzzasco Luzzaschi",
     img: "img/luzzaschi.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento"],
+    periodo: ["Escuelas nacionales", "Renacimiento", "Madrigalistas"],
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Aura soave.mp3", "audio/12 Madrigali per cantare e sonare_ N8, O dolcezze amarissime d'Amore.mp3"]
   },
 
         {
     nombre: "Claudio Monteverdi",
     img: "img/monteverdi.jpg",
-    periodo: ["Escuelas nacionales", "Renacimiento", "Barroco temprano", "Barroco"],
+    periodo: ["Escuelas nacionales", "Madrigalistas", "Renacimiento", "Barroco temprano", "Barroco"],
     lugar: "Italia",
     generos: ["Madrigal"],
-    audios: []
+    audios: ["audio/Ecco mormorar l'onde.mp3", "audio/Cantate Domino.mp3"]
   },
 
 
@@ -1073,7 +1075,7 @@ body::before {
     periodo: ["Barroco temprano", "Barroco"],
     lugar: "Italia",
     generos: [],
-    audios: []
+    audios: ["audio/Caccini - Ave Maria.mp3", "audio/Amarilli, mia bella.mp3"]
   },
 
   {
@@ -1081,8 +1083,8 @@ body::before {
     img: "img/frescobaldi.jpg",
     periodo: ["Barroco temprano", "Barroco"],
     lugar: "Italia",
-    generos: [],
-    audios: []
+    generos: ["Música para teclado"],
+    audios: ["audio/Se l'aura spira.mp3", "audio/Così mi disprezzate.mp3"]
   },
 
   {
@@ -1091,7 +1093,7 @@ body::before {
     periodo: ["Barroco temprano", "Barroco"],
     lugar: "Países Bajos",
     generos: [],
-    audios: []
+    audios: ["audio/Ballo del Granduca.mp3"]
   },
 
   {
@@ -1100,7 +1102,7 @@ body::before {
     periodo: ["Barroco medio", "Barroco"],
     lugar: "Alemania",
     generos: [],
-    audios: []
+    audios: ["audio/Sonata in A minor.mp3", "audio/Canzona.mp3"]
   },
 
 
@@ -1111,7 +1113,7 @@ body::before {
     periodo: ["Barroco medio", "Barroco"],
     lugar: "Italia",
     generos: [],
-    audios: []
+    audios: ["audio/Aria - Iam veni tu spes.mp3"]
   },
 
   {
@@ -1119,8 +1121,8 @@ body::before {
     img: "img/lully.jpg",
     periodo: ["Barroco medio", "Barroco"],
     lugar: "Francia",
-    generos: [],
-    audios: []
+    generos: ["Ópera"],
+    audios: ["audio/Marche pour la ceremonie des Turcs.mp3", "audio/Armide - Enfin, il est en ma puissance.mp3"]
   },
 
   {
@@ -1129,7 +1131,7 @@ body::before {
     periodo: ["Barroco medio", "Barroco"],
     lugar: "Inglaterra",
     generos: [],
-    audios: []
+    audios: ["audio/Dido's Lament.mp3"]
   },
 
   {
@@ -1137,8 +1139,8 @@ body::before {
     img: "img/haendel.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Inglaterra",
-    generos: [],
-    audios: []
+    generos: ["Oratorio"],
+    audios: ["audio/Lascia ch'io pianga.mp3"]
   },
 
   {
@@ -1146,8 +1148,8 @@ body::before {
     img: "img/corelli.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Italia",
-    generos: [],
-    audios: []
+    generos: ["Concerto grosso", "Sonata"],
+    audios: ["audio/Christmas Concerto (Vivace and Allegro).mp3"]
   },
 
   {
@@ -1156,25 +1158,25 @@ body::before {
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Italia",
     generos: [],
-    audios: []
+    audios: ["audio/Sonata K380.mp3"]
   },
 
-  {
-    nombre: "Leonardo Vinci",
-    img: "img/vinci.jpg",
-    periodo: ["Barroco tardío", "Barroco"],
-    lugar: "Italia",
-    generos: [],
-    audios: []
-  },
+  // {
+  //   nombre: "Leonardo Vinci",
+  //   img: "img/vinci.jpg",
+  //   periodo: ["Barroco tardío", "Barroco"],
+  //   lugar: "Italia",
+  //   generos: [],
+  //   audios: []
+  // },
 
   {
     nombre: "Antonio Vivaldi",
     img: "img/vivaldi.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Italia",
-    generos: [],
-    audios: []
+    generos: ["Concerto grosso"],
+    audios: ["audio/Violin Concerto in A Minor RV356.mp3", "audio/Violin Concerto In C Minor RV197.mp3"]
   },
 
   {
@@ -1182,8 +1184,8 @@ body::before {
     img: "img/rameau.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Francia",
-    generos: [],
-    audios: []
+    generos: ["Ópera"],
+    audios: ["audio/Suite in E minor.mp3", "audio/Platée.mp3"]
   },
 
   {
@@ -1192,7 +1194,7 @@ body::before {
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Italia",
     generos: [],
-    audios: []
+    audios: ["audio/Concierto para Trompeta y Orquesta en Re Mayor.mp3"]
   },
   
   {
@@ -1201,7 +1203,7 @@ body::before {
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Francia",
     generos: [],
-    audios: []
+    audios: ["audio/Premier Concert in G major (preludio).mp3", "audio/Le Tic Toc Choc ou Les Maillotins.mp3"]
   },
 
   {
@@ -1209,8 +1211,8 @@ body::before {
     img: "img/bach.jpg",
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Alemania",
-    generos: [],
-    audios: []
+    generos: ["Concierto", "Fuga"],
+    audios: ["audio/Fugue in G Minor, BWV 578.mp3", "audio/8 short preludes and fugues 7. A minor BWV 559.mp3"]
   },
 
   {
@@ -1219,9 +1221,17 @@ body::before {
     periodo: ["Barroco tardío", "Barroco"],
     lugar: "Alemania",
     generos: [],
-    audios: []
-  }
+    audios: ["audio/Suite N1 for Harpsichord I.mp3", "audio/Suite.mp3"]
+  },
 
+  {
+    nombre: "Georg Philipp Telemann",
+    img: "img/telemann.jpg",
+    periodo: ["Barroco tardío", "Barroco"],
+    lugar: "Alemania",
+    generos: [],
+    audios: ["audio/Concerto polonois.mp3", "audio/Concierto en re for Trumpet.mp3"]
+  }
 ];
 
 
@@ -1608,7 +1618,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   </script>
 
-
+<p class="aclaracion-filtros text-left text-muted small mb-2">
+  *Las imágenes son ilustrativas y pueden no representar con exactitud al compositor.
+</p>
 
 </body>
 </html>
